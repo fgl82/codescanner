@@ -618,3 +618,11 @@
 19:30:13.275 [main] INFO  scanner.NoFront - Camara web apagada
 19:30:13.275 [main] INFO  scanner.NoFront - Proceso finalizado
 19:30:13.275 [main] INFO  scanner.NoFront - ----------
+19:37:57.878 [main] INFO  scanner.NoFront - Starting the webcam
+19:37:59.256 [main] INFO  scanner.NoFront - Webcam started
+19:37:59.256 [main] INFO  scanner.NoFront - Trying to read a code
+19:37:59.449 [main] INFO  scanner.NoFront - A code could not be read, trying 25 more times
+19:38:01.147 [main] INFO  scanner.NoFront - Closing webcam			
+19:38:01.929 [main] INFO  scanner.NoFront - Webcam closed			
+19:38:01.929 [main] INFO  scanner.NoFront - Exiting
+19:38:01.929 [main] INFO  scanner.NoFront - ----------

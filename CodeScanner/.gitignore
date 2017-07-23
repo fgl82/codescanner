@@ -1,2 +1,4 @@
 /codes/
 /target/
+/logs/
+/.gitignore
