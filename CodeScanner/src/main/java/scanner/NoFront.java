@@ -179,6 +179,7 @@ public class NoFront {
 			props.load(input);
 		} catch (IOException ex) {
 			logger.info(ex.toString());
+			System.exit(1);
 		} 
 		return props;
 	}
