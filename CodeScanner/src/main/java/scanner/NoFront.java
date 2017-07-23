@@ -169,7 +169,7 @@ public class NoFront {
 		mainWindow.setSize(130,108);
 		mainWindow.getRootPane().setBorder(border);
 		mainWindow.setLocationRelativeTo(null);
-		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
+		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
 	}
 
