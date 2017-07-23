@@ -166,7 +166,7 @@ public class NoFront {
 		mainWindow.setUndecorated(true);	
 		mainWindow.getContentPane().setBackground(Color.BLACK);
 		mainWindow.pack();
-		mainWindow.setSize(130,108);
+		mainWindow.setSize(133,100);
 		mainWindow.getRootPane().setBorder(border);
 		mainWindow.setLocationRelativeTo(null);
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
