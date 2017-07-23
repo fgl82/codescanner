@@ -1,0 +1,32 @@
+03:36:19.692 [main] INFO   - Starting the webcam
+03:36:21.073 [main] INFO   - Webcam started
+03:36:21.200 [main] INFO   - Trying to read a code
+03:36:21.319 [main] INFO   - Retrying
+03:36:35.507 [main] INFO   - Closing webcam
+03:36:36.015 [main] INFO   - Webcam closed
+03:36:36.019 [main] INFO   - Exiting
+03:36:36.016 [main] INFO   - ----------
+03:37:03.081 [main] INFO   - Starting the webcam
+03:37:04.456 [main] INFO   - Webcam started
+03:37:04.610 [main] INFO   - Trying to read a code
+03:37:04.707 [main] INFO   - Retrying
+03:37:19.180 [main] INFO   - Closing webcam
+03:37:19.660 [main] INFO   - Webcam closed
+03:37:19.660 [main] INFO   - Exiting
+03:37:19.663 [main] INFO   - ----------
+03:37:38.074 [main] INFO   - Starting the webcam
+03:37:39.447 [main] INFO   - Webcam started
+03:37:39.561 [main] INFO   - Trying to read a code
+03:37:39.646 [main] INFO   - Retrying
+03:37:54.110 [main] INFO   - Closing webcam
+03:37:54.645 [main] INFO   - Webcam closed
+03:37:54.645 [main] INFO   - Exiting
+03:37:54.648 [main] INFO   - ----------
+03:38:17.332 [main] INFO   - Starting the webcam
+03:38:18.707 [main] INFO   - Webcam started
+03:38:18.818 [main] INFO   - Trying to read a code
+03:38:18.906 [main] INFO   - Retrying
+03:38:18.993 [main] INFO   - Closing webcam
+03:38:19.886 [main] INFO   - Webcam closed
+03:38:19.886 [main] INFO   - Exiting
+03:38:19.890 [main] INFO   - ----------
