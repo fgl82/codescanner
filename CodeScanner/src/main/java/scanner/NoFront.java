@@ -9,8 +9,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.EnumMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -36,36 +38,39 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
 public class NoFront {
-	private static Logger logger=LoggerFactory.getLogger("");
-	private static Properties properties = loadProperties("cfg/nofront.properties");
+	private static Logger logger;
+	private static Properties properties;
+	private static ResourceBundle messages;
 	
 	public static void main(String[] args){	
-		//Initialize everything	
-		String rom = "";
+		String rom = "";		
 		Webcam webcam = Webcam.getDefault();
+		properties = loadProperties("cfg/nofront.properties");
+		logger = LoggerFactory.getLogger("");
 		int count=0;
 		int retries = Integer.parseInt(properties.getProperty("retries"));
-		logger.info("Starting the webcam");
+		setLanguage();		
+		logger.info(messages.getString("starting_cam"));
 		if (!startWebCam(webcam)) {
-			logger.info("No Webcam has been detected");
+			logger.info(messages.getString("no_cam"));
 			if (args.length==0||!args[0].equals("letmetry")) {
 				count=retries;
 			}
 		} else {
-			logger.info("Webcam started");
-			logger.info("Trying to read a code");
+			logger.info(messages.getString("cam_started"));
+			logger.info(messages.getString("reading_code"));
 			showMessage();			
 		}
 		while (count<retries) {
 			try {			
 				//Take picture and try to read it. Every time it fails it goes to the catch block.
 				rom = getCodeFromPicture(webcam);
-				logger.info("Launching {}",rom);
+				logger.info(messages.getString("launching_rom"),rom);
 				launch(rom);
 				break;
 			} catch (NotFoundException|FormatException|ChecksumException e) {
 				if (count==0) {
-					logger.info("A code couldn't be read, trying again {} more times",retries);
+					logger.info(messages.getString("read_fail"),retries);
 				}
 				count++;
 			} catch (Exception e) {
@@ -74,14 +79,24 @@ public class NoFront {
 			}
 		}
 		if (webcam!=null && webcam.isOpen()) {
-			logger.info("Closing webcam");			
+			logger.info(messages.getString("closing_cam"));			
 			webcam.close();
-			logger.info("Webcam closed");			
+			logger.info(messages.getString("cam_closed"));			
 		}
-		logger.info("Exiting");
+		logger.info(messages.getString("exit"));
 		logger.info("----------");		
 		System.exit(0);
 	}
+	
+	private static void setLanguage() {
+		Locale locale = Locale.getDefault();
+		String language = properties.getProperty("language");
+		String country = properties.getProperty("country");		
+		if (language!=null&&country!=null) {			
+			locale = new Locale(language,country);
+		} 
+		messages = ResourceBundle.getBundle("messages", locale);
+	}	
 	
 	public static void launch(String rom) throws IOException {
 		String nesRomsDir =  properties.getProperty("nesRomsDir");
@@ -97,15 +112,22 @@ public class NoFront {
 		} else if (fileExistsInDir(rom,genesisRomsDir)) {
 			Runtime.getRuntime().exec(genesisExec+" \""+genesisRomsDir+File.separator+rom+"\"");
 		} else {
-			logger.info("{} can't be found", rom);
+			logger.info(messages.getString("rom_not_found"), rom);
 		}
-
 	}
 	
 	public static boolean fileExistsInDir(String file,String dir) {
 		return new File(dir,file).exists();
 	}
 
+	public static Result realRead(Webcam webcam) throws NotFoundException, ChecksumException, FormatException {
+		BufferedImage image = webcam.getImage();
+		LuminanceSource source = new BufferedImageLuminanceSource(image);
+		BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+		Reader reader = new MultiFormatReader();
+		return reader.decode(bitmap);
+	}
+	
 	public static Result mockRead() throws IOException, NotFoundException, ChecksumException, FormatException {
 		String mockImg = ".\\codes\\genesis\\Alien Soldier (Europe).png";
 		@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -117,15 +139,7 @@ public class NoFront {
 		BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 		Reader reader = new MultiFormatReader();
 		return reader.decode(bitmap,tmpHintsMap);
-	}
-
-	public static Result realRead(Webcam webcam) throws NotFoundException, ChecksumException, FormatException {
-		BufferedImage image = webcam.getImage();
-		LuminanceSource source = new BufferedImageLuminanceSource(image);
-		BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-		Reader reader = new MultiFormatReader();
-		return reader.decode(bitmap);
-	}
+	}	
 
 	public static void showMessage() {
 		JFrame frame = new JFrame("CodeScanner");
