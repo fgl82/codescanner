@@ -1,0 +1,620 @@
+17:18:18.176 [main] INFO  scanner.NoFront - Starting the webcam
+17:18:19.556 [main] INFO  scanner.NoFront - Webcam started
+17:18:19.556 [main] INFO  scanner.NoFront - Trying to read a code
+17:18:19.751 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:18:37.481 [main] INFO  scanner.NoFront - Closing webcam			
+17:18:38.006 [main] INFO  scanner.NoFront - Webcam closed			
+17:18:38.007 [main] INFO  scanner.NoFront - Exiting
+17:18:38.007 [main] INFO  scanner.NoFront - ----------
+17:19:35.995 [main] INFO  scanner.NoFront - Starting the webcam
+17:19:37.379 [main] INFO  scanner.NoFront - Webcam started
+17:19:37.379 [main] INFO  scanner.NoFront - Trying to read a code
+17:19:37.571 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:19:55.622 [main] INFO  scanner.NoFront - Closing webcam			
+17:19:56.070 [main] INFO  scanner.NoFront - Webcam closed			
+17:19:56.071 [main] INFO  scanner.NoFront - Exiting
+17:19:56.071 [main] INFO  scanner.NoFront - ----------
+17:20:04.565 [main] INFO  scanner.NoFront - Starting the webcam
+17:20:05.645 [main] INFO  scanner.NoFront - Webcam started
+17:20:05.645 [main] INFO  scanner.NoFront - Trying to read a code
+17:20:05.871 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:20:23.922 [main] INFO  scanner.NoFront - Closing webcam			
+17:20:24.432 [main] INFO  scanner.NoFront - Webcam closed			
+17:20:24.432 [main] INFO  scanner.NoFront - Exiting
+17:20:24.432 [main] INFO  scanner.NoFront - ----------
+17:20:45.972 [main] INFO  scanner.NoFront - Starting the webcam
+17:20:47.352 [main] INFO  scanner.NoFront - Webcam started
+17:20:47.352 [main] INFO  scanner.NoFront - Trying to read a code
+17:20:47.542 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:21:05.215 [main] INFO  scanner.NoFront - Closing webcam			
+17:21:05.796 [main] INFO  scanner.NoFront - Webcam closed			
+17:21:05.797 [main] INFO  scanner.NoFront - Exiting
+17:21:05.797 [main] INFO  scanner.NoFront - ----------
+17:21:14.545 [main] INFO  scanner.NoFront - Starting the webcam
+17:21:15.622 [main] INFO  scanner.NoFront - Webcam started
+17:21:15.622 [main] INFO  scanner.NoFront - Trying to read a code
+17:21:15.845 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:21:33.805 [main] INFO  scanner.NoFront - Closing webcam			
+17:21:34.413 [main] INFO  scanner.NoFront - Webcam closed			
+17:21:34.413 [main] INFO  scanner.NoFront - Exiting
+17:21:34.413 [main] INFO  scanner.NoFront - ----------
+17:21:47.937 [main] INFO  scanner.NoFront - Starting the webcam
+17:21:49.322 [main] INFO  scanner.NoFront - Webcam started
+17:21:49.323 [main] INFO  scanner.NoFront - Trying to read a code
+17:21:49.518 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:22:07.562 [main] INFO  scanner.NoFront - Closing webcam			
+17:22:08.007 [main] INFO  scanner.NoFront - Webcam closed			
+17:22:08.007 [main] INFO  scanner.NoFront - Exiting
+17:22:08.007 [main] INFO  scanner.NoFront - ----------
+17:22:41.074 [main] INFO  scanner.NoFront - Starting the webcam
+17:22:42.456 [main] INFO  scanner.NoFront - Webcam started
+17:22:42.456 [main] INFO  scanner.NoFront - Trying to read a code
+17:22:42.658 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:23:00.700 [main] INFO  scanner.NoFront - Closing webcam			
+17:23:01.158 [main] INFO  scanner.NoFront - Webcam closed			
+17:23:01.158 [main] INFO  scanner.NoFront - Exiting
+17:23:01.158 [main] INFO  scanner.NoFront - ----------
+17:23:57.701 [main] INFO  scanner.NoFront - Starting the webcam
+17:23:59.083 [main] INFO  scanner.NoFront - Webcam started
+17:23:59.083 [main] INFO  scanner.NoFront - Trying to read a code
+17:23:59.342 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:24:17.392 [main] INFO  scanner.NoFront - Closing webcam			
+17:24:18.032 [main] INFO  scanner.NoFront - Webcam closed			
+17:24:18.033 [main] INFO  scanner.NoFront - Exiting
+17:24:18.033 [main] INFO  scanner.NoFront - ----------
+17:24:26.875 [main] INFO  scanner.NoFront - Starting the webcam
+17:24:27.954 [main] INFO  scanner.NoFront - Webcam started
+17:24:27.954 [main] INFO  scanner.NoFront - Trying to read a code
+17:24:28.185 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:24:46.233 [main] INFO  scanner.NoFront - Closing webcam			
+17:24:46.745 [main] INFO  scanner.NoFront - Webcam closed			
+17:24:46.745 [main] INFO  scanner.NoFront - Exiting
+17:24:46.745 [main] INFO  scanner.NoFront - ----------
+17:26:34.963 [main] INFO  scanner.NoFront - Starting the webcam
+17:26:36.345 [main] INFO  scanner.NoFront - Webcam started
+17:26:36.345 [main] INFO  scanner.NoFront - Trying to read a code
+17:26:36.543 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:26:54.583 [main] INFO  scanner.NoFront - Closing webcam			
+17:26:55.041 [main] INFO  scanner.NoFront - Webcam closed			
+17:26:55.041 [main] INFO  scanner.NoFront - Exiting
+17:26:55.041 [main] INFO  scanner.NoFront - ----------
+17:35:48.803 [main] INFO  scanner.NoFront - Starting the webcam
+17:35:50.188 [main] INFO  scanner.NoFront - Webcam started
+17:35:50.188 [main] INFO  scanner.NoFront - Trying to read a code
+17:35:50.388 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:36:08.429 [main] INFO  scanner.NoFront - Closing webcam			
+17:36:08.896 [main] INFO  scanner.NoFront - Webcam closed			
+17:36:08.897 [main] INFO  scanner.NoFront - Exiting
+17:36:08.897 [main] INFO  scanner.NoFront - ----------
+17:36:22.274 [main] INFO  scanner.NoFront - Starting the webcam
+17:36:23.658 [main] INFO  scanner.NoFront - Webcam started
+17:36:23.658 [main] INFO  scanner.NoFront - Trying to read a code
+17:36:23.872 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:36:37.550 [main] INFO  scanner.NoFront - Starting the webcam
+17:36:41.902 [main] INFO  scanner.NoFront - Closing webcam			
+17:36:42.364 [main] INFO  scanner.NoFront - Webcam closed			
+17:36:42.364 [main] INFO  scanner.NoFront - Exiting
+17:36:42.364 [main] INFO  scanner.NoFront - ----------
+17:36:51.621 [main] INFO  scanner.NoFront - Starting the webcam
+17:36:52.698 [main] INFO  scanner.NoFront - Webcam started
+17:36:52.698 [main] INFO  scanner.NoFront - Trying to read a code
+17:36:52.921 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:37:10.882 [main] INFO  scanner.NoFront - Closing webcam			
+17:37:11.503 [main] INFO  scanner.NoFront - Webcam closed			
+17:37:11.503 [main] INFO  scanner.NoFront - Exiting
+17:37:11.503 [main] INFO  scanner.NoFront - ----------
+17:37:40.084 [main] INFO  scanner.NoFront - Starting the webcam
+17:37:41.464 [main] INFO  scanner.NoFront - Webcam started
+17:37:41.465 [main] INFO  scanner.NoFront - Trying to read a code
+17:37:41.662 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:37:59.393 [main] INFO  scanner.NoFront - Closing webcam			
+17:37:59.928 [main] INFO  scanner.NoFront - Webcam closed			
+17:37:59.928 [main] INFO  scanner.NoFront - Exiting
+17:37:59.928 [main] INFO  scanner.NoFront - ----------
+17:40:08.780 [main] INFO  scanner.NoFront - Starting the webcam
+17:40:10.170 [main] INFO  scanner.NoFront - Webcam started
+17:40:10.170 [main] INFO  scanner.NoFront - Trying to read a code
+17:40:10.360 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:40:28.407 [main] INFO  scanner.NoFront - Closing webcam			
+17:40:28.870 [main] INFO  scanner.NoFront - Webcam closed			
+17:40:28.870 [main] INFO  scanner.NoFront - Exiting
+17:40:28.870 [main] INFO  scanner.NoFront - ----------
+17:41:04.491 [main] INFO  scanner.NoFront - Starting the webcam
+17:41:05.873 [main] INFO  scanner.NoFront - Webcam started
+17:41:05.873 [main] INFO  scanner.NoFront - Trying to read a code
+17:41:06.075 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:41:24.117 [main] INFO  scanner.NoFront - Closing webcam			
+17:41:24.633 [main] INFO  scanner.NoFront - Webcam closed			
+17:41:24.633 [main] INFO  scanner.NoFront - Exiting
+17:41:24.633 [main] INFO  scanner.NoFront - ----------
+17:41:53.688 [main] INFO  scanner.NoFront - Starting the webcam
+17:41:55.073 [main] INFO  scanner.NoFront - Webcam started
+17:41:55.073 [main] INFO  scanner.NoFront - Trying to read a code
+17:41:55.330 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:42:13.373 [main] INFO  scanner.NoFront - Closing webcam			
+17:42:14.021 [main] INFO  scanner.NoFront - Webcam closed			
+17:42:14.021 [main] INFO  scanner.NoFront - Exiting
+17:42:14.021 [main] INFO  scanner.NoFront - ----------
+17:42:21.342 [main] INFO  scanner.NoFront - Starting the webcam
+17:42:22.418 [main] INFO  scanner.NoFront - Webcam started
+17:42:22.418 [main] INFO  scanner.NoFront - Trying to read a code
+17:42:22.645 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:42:40.695 [main] INFO  scanner.NoFront - Closing webcam			
+17:42:41.221 [main] INFO  scanner.NoFront - Webcam closed			
+17:42:41.222 [main] INFO  scanner.NoFront - Exiting
+17:42:41.222 [main] INFO  scanner.NoFront - ----------
+17:42:42.587 [main] INFO  scanner.NoFront - Starting the webcam
+17:42:43.663 [main] INFO  scanner.NoFront - Webcam started
+17:42:43.664 [main] INFO  scanner.NoFront - Trying to read a code
+17:42:43.891 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:43:02.006 [main] INFO  scanner.NoFront - Closing webcam			
+17:43:02.461 [main] INFO  scanner.NoFront - Webcam closed			
+17:43:02.462 [main] INFO  scanner.NoFront - Exiting
+17:43:02.462 [main] INFO  scanner.NoFront - ----------
+17:43:05.512 [main] INFO  scanner.NoFront - Starting the webcam
+17:43:06.588 [main] INFO  scanner.NoFront - Webcam started
+17:43:06.589 [main] INFO  scanner.NoFront - Trying to read a code
+17:43:06.806 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:43:24.767 [main] INFO  scanner.NoFront - Closing webcam			
+17:43:25.382 [main] INFO  scanner.NoFront - Webcam closed			
+17:43:25.382 [main] INFO  scanner.NoFront - Exiting
+17:43:25.382 [main] INFO  scanner.NoFront - ----------
+17:43:40.350 [main] INFO  scanner.NoFront - Starting the webcam
+17:43:41.736 [main] INFO  scanner.NoFront - Webcam started
+17:43:41.736 [main] INFO  scanner.NoFront - Trying to read a code
+17:43:41.986 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:43:59.976 [main] INFO  scanner.NoFront - Closing webcam			
+17:44:00.431 [main] INFO  scanner.NoFront - Webcam closed			
+17:44:00.431 [main] INFO  scanner.NoFront - Exiting
+17:44:00.431 [main] INFO  scanner.NoFront - ----------
+17:45:03.974 [main] INFO  scanner.NoFront - Starting the webcam
+17:45:05.354 [main] INFO  scanner.NoFront - Webcam started
+17:45:05.355 [main] INFO  scanner.NoFront - Trying to read a code
+17:45:05.554 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:45:23.603 [main] INFO  scanner.NoFront - Closing webcam			
+17:45:24.064 [main] INFO  scanner.NoFront - Webcam closed			
+17:45:24.064 [main] INFO  scanner.NoFront - Exiting
+17:45:24.064 [main] INFO  scanner.NoFront - ----------
+17:45:49.543 [main] INFO  scanner.NoFront - Starting the webcam
+17:45:50.924 [main] INFO  scanner.NoFront - Webcam started
+17:45:50.924 [main] INFO  scanner.NoFront - Trying to read a code
+17:45:51.119 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:46:08.846 [main] INFO  scanner.NoFront - Closing webcam			
+17:46:09.377 [main] INFO  scanner.NoFront - Webcam closed			
+17:46:09.377 [main] INFO  scanner.NoFront - Exiting
+17:46:09.377 [main] INFO  scanner.NoFront - ----------
+17:46:32.165 [main] INFO  scanner.NoFront - Starting the webcam
+17:46:33.546 [main] INFO  scanner.NoFront - Webcam started
+17:46:33.546 [main] INFO  scanner.NoFront - Trying to read a code
+17:46:33.746 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:46:51.788 [main] INFO  scanner.NoFront - Closing webcam			
+17:46:52.249 [main] INFO  scanner.NoFront - Webcam closed			
+17:46:52.249 [main] INFO  scanner.NoFront - Exiting
+17:46:52.249 [main] INFO  scanner.NoFront - ----------
+17:47:01.397 [main] INFO  scanner.NoFront - Starting the webcam
+17:47:02.474 [main] INFO  scanner.NoFront - Webcam started
+17:47:02.475 [main] INFO  scanner.NoFront - Trying to read a code
+17:47:02.697 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:47:20.659 [main] INFO  scanner.NoFront - Closing webcam			
+17:47:21.280 [main] INFO  scanner.NoFront - Webcam closed			
+17:47:21.280 [main] INFO  scanner.NoFront - Exiting
+17:47:21.280 [main] INFO  scanner.NoFront - ----------
+17:47:33.790 [main] INFO  scanner.NoFront - Starting the webcam
+17:47:35.171 [main] INFO  scanner.NoFront - Webcam started
+17:47:35.172 [main] INFO  scanner.NoFront - Trying to read a code
+17:47:35.369 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:47:53.094 [main] INFO  scanner.NoFront - Closing webcam			
+17:47:53.625 [main] INFO  scanner.NoFront - Webcam closed			
+17:47:53.626 [main] INFO  scanner.NoFront - Exiting
+17:47:53.626 [main] INFO  scanner.NoFront - ----------
+17:48:18.721 [main] INFO  scanner.NoFront - Starting the webcam
+17:48:20.102 [main] INFO  scanner.NoFront - Webcam started
+17:48:20.102 [main] INFO  scanner.NoFront - Trying to read a code
+17:48:20.299 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:48:38.351 [main] INFO  scanner.NoFront - Closing webcam			
+17:48:38.809 [main] INFO  scanner.NoFront - Webcam closed			
+17:48:38.809 [main] INFO  scanner.NoFront - Exiting
+17:48:38.809 [main] INFO  scanner.NoFront - ----------
+17:49:09.760 [main] INFO  scanner.NoFront - Starting the webcam
+17:49:11.143 [main] INFO  scanner.NoFront - Webcam started
+17:49:11.144 [main] INFO  scanner.NoFront - Trying to read a code
+17:49:11.397 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:49:29.451 [main] INFO  scanner.NoFront - Closing webcam			
+17:49:30.103 [main] INFO  scanner.NoFront - Webcam closed			
+17:49:30.103 [main] INFO  scanner.NoFront - Exiting
+17:49:30.103 [main] INFO  scanner.NoFront - ----------
+17:49:41.659 [main] INFO  scanner.NoFront - Starting the webcam
+17:49:43.045 [main] INFO  scanner.NoFront - Webcam started
+17:49:43.045 [main] INFO  scanner.NoFront - Trying to read a code
+17:49:43.247 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:50:01.283 [main] INFO  scanner.NoFront - Closing webcam			
+17:50:01.747 [main] INFO  scanner.NoFront - Webcam closed			
+17:50:01.747 [main] INFO  scanner.NoFront - Exiting
+17:50:01.747 [main] INFO  scanner.NoFront - ----------
+17:52:12.679 [main] INFO  scanner.NoFront - Starting the webcam
+17:52:14.061 [main] INFO  scanner.NoFront - Webcam started
+17:52:14.061 [main] INFO  scanner.NoFront - Trying to read a code
+17:52:14.320 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:52:32.080 [main] INFO  scanner.NoFront - Closing webcam			
+17:52:32.522 [main] INFO  scanner.NoFront - Webcam closed			
+17:52:32.522 [main] INFO  scanner.NoFront - Exiting
+17:52:32.522 [main] INFO  scanner.NoFront - ----------
+17:53:34.293 [main] INFO  scanner.NoFront - Starting the webcam
+17:53:35.672 [main] INFO  scanner.NoFront - Webcam started
+17:53:35.672 [main] INFO  scanner.NoFront - Trying to read a code
+17:53:35.928 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:53:53.692 [main] INFO  scanner.NoFront - Closing webcam			
+17:53:54.116 [main] INFO  scanner.NoFront - Webcam closed			
+17:53:54.116 [main] INFO  scanner.NoFront - Exiting
+17:53:54.116 [main] INFO  scanner.NoFront - ----------
+17:54:12.490 [main] INFO  scanner.NoFront - Starting the webcam
+17:54:13.871 [main] INFO  scanner.NoFront - Webcam started
+17:54:13.871 [main] INFO  scanner.NoFront - Trying to read a code
+17:54:14.129 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:54:32.178 [main] INFO  scanner.NoFront - Closing webcam			
+17:54:32.819 [main] INFO  scanner.NoFront - Webcam closed			
+17:54:32.819 [main] INFO  scanner.NoFront - Exiting
+17:54:32.819 [main] INFO  scanner.NoFront - ----------
+17:54:34.014 [main] INFO  scanner.NoFront - Starting the webcam
+17:54:35.089 [main] INFO  scanner.NoFront - Webcam started
+17:54:35.089 [main] INFO  scanner.NoFront - Trying to read a code
+17:54:35.319 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:54:53.369 [main] INFO  scanner.NoFront - Closing webcam			
+17:54:53.886 [main] INFO  scanner.NoFront - Webcam closed			
+17:54:53.886 [main] INFO  scanner.NoFront - Exiting
+17:54:53.886 [main] INFO  scanner.NoFront - ----------
+17:54:58.527 [main] INFO  scanner.NoFront - Starting the webcam
+17:54:59.604 [main] INFO  scanner.NoFront - Webcam started
+17:54:59.604 [main] INFO  scanner.NoFront - Trying to read a code
+17:54:59.831 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:55:17.880 [main] INFO  scanner.NoFront - Closing webcam			
+17:55:18.393 [main] INFO  scanner.NoFront - Webcam closed			
+17:55:18.393 [main] INFO  scanner.NoFront - Exiting
+17:55:18.393 [main] INFO  scanner.NoFront - ----------
+17:55:23.250 [main] INFO  scanner.NoFront - Starting the webcam
+17:55:24.331 [main] INFO  scanner.NoFront - Webcam started
+17:55:24.331 [main] INFO  scanner.NoFront - Trying to read a code
+17:55:24.554 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:55:42.606 [main] INFO  scanner.NoFront - Closing webcam			
+17:55:43.117 [main] INFO  scanner.NoFront - Webcam closed			
+17:55:43.117 [main] INFO  scanner.NoFront - Exiting
+17:55:43.117 [main] INFO  scanner.NoFront - ----------
+17:56:06.541 [main] INFO  scanner.NoFront - Starting the webcam
+17:56:07.923 [main] INFO  scanner.NoFront - Webcam started
+17:56:07.924 [main] INFO  scanner.NoFront - Trying to read a code
+17:56:08.124 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+17:56:26.167 [main] INFO  scanner.NoFront - Closing webcam			
+17:56:26.613 [main] INFO  scanner.NoFront - Webcam closed			
+17:56:26.613 [main] INFO  scanner.NoFront - Exiting
+17:56:26.613 [main] INFO  scanner.NoFront - ----------
+18:02:52.064 [main] INFO  scanner.NoFront - Starting the webcam
+18:02:53.450 [main] INFO  scanner.NoFront - Webcam started
+18:02:53.450 [main] INFO  scanner.NoFront - Trying to read a code
+18:02:53.662 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:03:11.693 [main] INFO  scanner.NoFront - Closing webcam			
+18:03:12.156 [main] INFO  scanner.NoFront - Webcam closed			
+18:03:12.156 [main] INFO  scanner.NoFront - Exiting
+18:03:12.156 [main] INFO  scanner.NoFront - ----------
+18:03:21.548 [main] INFO  scanner.NoFront - Starting the webcam
+18:03:22.633 [main] INFO  scanner.NoFront - Webcam started
+18:03:22.633 [main] INFO  scanner.NoFront - Trying to read a code
+18:03:22.860 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:03:40.909 [main] INFO  scanner.NoFront - Closing webcam			
+18:03:41.434 [main] INFO  scanner.NoFront - Webcam closed			
+18:03:41.434 [main] INFO  scanner.NoFront - Exiting
+18:03:41.434 [main] INFO  scanner.NoFront - ----------
+18:03:47.492 [main] INFO  scanner.NoFront - Starting the webcam
+18:03:48.576 [main] INFO  scanner.NoFront - Webcam started
+18:03:48.576 [main] INFO  scanner.NoFront - Trying to read a code
+18:03:48.816 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:04:06.848 [main] INFO  scanner.NoFront - Closing webcam			
+18:04:07.382 [main] INFO  scanner.NoFront - Webcam closed			
+18:04:07.382 [main] INFO  scanner.NoFront - Exiting
+18:04:07.382 [main] INFO  scanner.NoFront - ----------
+18:05:05.324 [main] INFO  scanner.NoFront - Starting the webcam
+18:05:06.700 [main] INFO  scanner.NoFront - Webcam started
+18:05:06.700 [main] INFO  scanner.NoFront - Trying to read a code
+18:05:06.912 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:05:24.944 [main] INFO  scanner.NoFront - Closing webcam			
+18:05:25.396 [main] INFO  scanner.NoFront - Webcam closed			
+18:05:25.396 [main] INFO  scanner.NoFront - Exiting
+18:05:25.396 [main] INFO  scanner.NoFront - ----------
+18:05:28.104 [main] INFO  scanner.NoFront - Starting the webcam
+18:05:29.182 [main] INFO  scanner.NoFront - Webcam started
+18:05:29.182 [main] INFO  scanner.NoFront - Trying to read a code
+18:05:29.411 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:05:47.459 [main] INFO  scanner.NoFront - Closing webcam			
+18:05:47.971 [main] INFO  scanner.NoFront - Webcam closed			
+18:05:47.971 [main] INFO  scanner.NoFront - Exiting
+18:05:47.971 [main] INFO  scanner.NoFront - ----------
+18:06:32.766 [main] INFO  scanner.NoFront - Starting the webcam
+18:06:34.145 [main] INFO  scanner.NoFront - Webcam started
+18:06:34.145 [main] INFO  scanner.NoFront - Trying to read a code
+18:06:34.349 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:06:52.389 [main] INFO  scanner.NoFront - Closing webcam			
+18:06:52.840 [main] INFO  scanner.NoFront - Webcam closed			
+18:06:52.840 [main] INFO  scanner.NoFront - Exiting
+18:06:52.840 [main] INFO  scanner.NoFront - ----------
+18:06:58.387 [main] INFO  scanner.NoFront - Starting the webcam
+18:06:59.470 [main] INFO  scanner.NoFront - Webcam started
+18:06:59.470 [main] INFO  scanner.NoFront - Trying to read a code
+18:06:59.697 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:07:17.744 [main] INFO  scanner.NoFront - Closing webcam			
+18:07:18.262 [main] INFO  scanner.NoFront - Webcam closed			
+18:07:18.262 [main] INFO  scanner.NoFront - Exiting
+18:07:18.262 [main] INFO  scanner.NoFront - ----------
+18:21:30.434 [main] INFO  scanner.NoFront - Starting the webcam
+18:21:31.824 [main] INFO  scanner.NoFront - Webcam started
+18:21:31.824 [main] INFO  scanner.NoFront - Trying to read a code
+18:21:32.018 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:21:50.069 [main] INFO  scanner.NoFront - Closing webcam			
+18:21:50.526 [main] INFO  scanner.NoFront - Webcam closed			
+18:21:50.526 [main] INFO  scanner.NoFront - Exiting
+18:21:50.526 [main] INFO  scanner.NoFront - ----------
+18:25:32.867 [main] INFO  scanner.NoFront - Starting the webcam
+18:25:34.249 [main] INFO  scanner.NoFront - Webcam started
+18:25:34.249 [main] INFO  scanner.NoFront - Trying to read a code
+18:25:34.447 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:25:52.179 [main] INFO  scanner.NoFront - Closing webcam			
+18:25:52.705 [main] INFO  scanner.NoFront - Webcam closed			
+18:25:52.705 [main] INFO  scanner.NoFront - Exiting
+18:25:52.705 [main] INFO  scanner.NoFront - ----------
+18:25:55.958 [main] INFO  scanner.NoFront - Starting the webcam
+18:25:57.037 [main] INFO  scanner.NoFront - Webcam started
+18:25:57.038 [main] INFO  scanner.NoFront - Trying to read a code
+18:25:57.266 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:26:15.214 [main] INFO  scanner.NoFront - Closing webcam			
+18:26:15.838 [main] INFO  scanner.NoFront - Webcam closed			
+18:26:15.838 [main] INFO  scanner.NoFront - Exiting
+18:26:15.838 [main] INFO  scanner.NoFront - ----------
+18:30:18.080 [main] INFO  scanner.NoFront - Starting the webcam
+18:30:19.465 [main] INFO  scanner.NoFront - Webcam started
+18:30:19.465 [main] INFO  scanner.NoFront - Trying to read a code
+18:30:19.663 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:30:34.923 [main] INFO  scanner.NoFront - Starting the webcam
+18:30:37.711 [main] INFO  scanner.NoFront - Closing webcam			
+18:30:38.169 [main] INFO  scanner.NoFront - Webcam closed			
+18:30:38.170 [main] INFO  scanner.NoFront - Exiting
+18:30:38.170 [main] INFO  scanner.NoFront - ----------
+18:30:43.227 [main] INFO  scanner.NoFront - Starting the webcam
+18:30:44.308 [main] INFO  scanner.NoFront - Webcam started
+18:30:44.308 [main] INFO  scanner.NoFront - Trying to read a code
+18:30:44.530 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:31:02.260 [main] INFO  scanner.NoFront - Closing webcam			
+18:31:02.864 [main] INFO  scanner.NoFront - Webcam closed			
+18:31:02.864 [main] INFO  scanner.NoFront - Exiting
+18:31:02.864 [main] INFO  scanner.NoFront - ----------
+18:34:25.710 [main] INFO  scanner.NoFront - Starting the webcam
+18:34:27.098 [main] INFO  scanner.NoFront - Webcam started
+18:34:27.099 [main] INFO  scanner.NoFront - Trying to read a code
+18:34:27.295 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:34:45.343 [main] INFO  scanner.NoFront - Closing webcam			
+18:34:45.803 [main] INFO  scanner.NoFront - Webcam closed			
+18:34:45.803 [main] INFO  scanner.NoFront - Exiting
+18:34:45.803 [main] INFO  scanner.NoFront - ----------
+18:35:18.258 [main] INFO  scanner.NoFront - Starting the webcam
+18:35:19.643 [main] INFO  scanner.NoFront - Webcam started
+18:35:19.644 [main] INFO  scanner.NoFront - Trying to read a code
+18:35:19.843 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:35:37.563 [main] INFO  scanner.NoFront - Closing webcam			
+18:35:38.097 [main] INFO  scanner.NoFront - Webcam closed			
+18:35:38.097 [main] INFO  scanner.NoFront - Exiting
+18:35:38.097 [main] INFO  scanner.NoFront - ----------
+18:36:04.243 [main] INFO  scanner.NoFront - Starting the webcam
+18:36:05.625 [main] INFO  scanner.NoFront - Webcam started
+18:36:05.625 [main] INFO  scanner.NoFront - Trying to read a code
+18:36:05.820 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:36:23.547 [main] INFO  scanner.NoFront - Closing webcam			
+18:36:24.077 [main] INFO  scanner.NoFront - Webcam closed			
+18:36:24.077 [main] INFO  scanner.NoFront - Exiting
+18:36:24.077 [main] INFO  scanner.NoFront - ----------
+18:36:29.701 [main] INFO  scanner.NoFront - Starting the webcam
+18:36:30.782 [main] INFO  scanner.NoFront - Webcam started
+18:36:30.783 [main] INFO  scanner.NoFront - Trying to read a code
+18:36:31.001 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:36:48.957 [main] INFO  scanner.NoFront - Closing webcam			
+18:36:49.587 [main] INFO  scanner.NoFront - Webcam closed			
+18:36:49.587 [main] INFO  scanner.NoFront - Exiting
+18:36:49.587 [main] INFO  scanner.NoFront - ----------
+18:37:14.077 [main] INFO  scanner.NoFront - Starting the webcam
+18:37:15.463 [main] INFO  scanner.NoFront - Webcam started
+18:37:15.464 [main] INFO  scanner.NoFront - Trying to read a code
+18:37:15.656 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:37:33.705 [main] INFO  scanner.NoFront - Closing webcam			
+18:37:34.170 [main] INFO  scanner.NoFront - Webcam closed			
+18:37:34.170 [main] INFO  scanner.NoFront - Exiting
+18:37:34.170 [main] INFO  scanner.NoFront - ----------
+18:37:37.304 [main] INFO  scanner.NoFront - Starting the webcam
+18:37:38.385 [main] INFO  scanner.NoFront - Webcam started
+18:37:38.385 [main] INFO  scanner.NoFront - Trying to read a code
+18:37:38.605 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:37:56.337 [main] INFO  scanner.NoFront - Closing webcam			
+18:37:56.934 [main] INFO  scanner.NoFront - Webcam closed			
+18:37:56.934 [main] INFO  scanner.NoFront - Exiting
+18:37:56.934 [main] INFO  scanner.NoFront - ----------
+18:37:59.949 [main] INFO  scanner.NoFront - Starting the webcam
+18:38:01.029 [main] INFO  scanner.NoFront - Webcam started
+18:38:01.029 [main] INFO  scanner.NoFront - Trying to read a code
+18:38:01.259 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:38:19.303 [main] INFO  scanner.NoFront - Closing webcam			
+18:38:19.816 [main] INFO  scanner.NoFront - Webcam closed			
+18:38:19.816 [main] INFO  scanner.NoFront - Exiting
+18:38:19.816 [main] INFO  scanner.NoFront - ----------
+18:38:22.099 [main] INFO  scanner.NoFront - Starting the webcam
+18:38:23.183 [main] INFO  scanner.NoFront - Webcam started
+18:38:23.183 [main] INFO  scanner.NoFront - Trying to read a code
+18:38:23.407 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:38:41.522 [main] INFO  scanner.NoFront - Closing webcam			
+18:38:41.971 [main] INFO  scanner.NoFront - Webcam closed			
+18:38:41.971 [main] INFO  scanner.NoFront - Exiting
+18:38:41.971 [main] INFO  scanner.NoFront - ----------
+18:38:50.157 [main] INFO  scanner.NoFront - Starting the webcam
+18:38:51.229 [main] INFO  scanner.NoFront - Webcam started
+18:38:51.229 [main] INFO  scanner.NoFront - Trying to read a code
+18:38:51.462 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:39:09.508 [main] INFO  scanner.NoFront - Closing webcam			
+18:39:10.024 [main] INFO  scanner.NoFront - Webcam closed			
+18:39:10.025 [main] INFO  scanner.NoFront - Exiting
+18:39:10.025 [main] INFO  scanner.NoFront - ----------
+18:39:29.863 [main] INFO  scanner.NoFront - Starting the webcam
+18:39:31.246 [main] INFO  scanner.NoFront - Webcam started
+18:39:31.246 [main] INFO  scanner.NoFront - Trying to read a code
+18:39:31.499 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:39:49.329 [main] INFO  scanner.NoFront - Closing webcam			
+18:39:49.940 [main] INFO  scanner.NoFront - Webcam closed			
+18:39:49.941 [main] INFO  scanner.NoFront - Exiting
+18:39:49.941 [main] INFO  scanner.NoFront - ----------
+18:39:56.431 [main] INFO  scanner.NoFront - Starting the webcam
+18:39:57.511 [main] INFO  scanner.NoFront - Webcam started
+18:39:57.511 [main] INFO  scanner.NoFront - Trying to read a code
+18:39:57.736 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:40:15.787 [main] INFO  scanner.NoFront - Closing webcam			
+18:40:16.301 [main] INFO  scanner.NoFront - Webcam closed			
+18:40:16.301 [main] INFO  scanner.NoFront - Exiting
+18:40:16.301 [main] INFO  scanner.NoFront - ----------
+18:40:19.237 [main] INFO  scanner.NoFront - Starting the webcam
+18:40:20.369 [main] INFO  scanner.NoFront - Webcam started
+18:40:20.369 [main] INFO  scanner.NoFront - Trying to read a code
+18:40:20.599 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:40:33.330 [main] INFO  scanner.NoFront - Starting the webcam
+18:40:38.648 [main] INFO  scanner.NoFront - Closing webcam			
+18:40:39.161 [main] INFO  scanner.NoFront - Webcam closed			
+18:40:39.162 [main] INFO  scanner.NoFront - Exiting
+18:40:39.162 [main] INFO  scanner.NoFront - ----------
+18:40:40.186 [main] INFO  scanner.NoFront - Starting the webcam
+18:40:41.260 [main] INFO  scanner.NoFront - Webcam started
+18:40:41.260 [main] INFO  scanner.NoFront - Trying to read a code
+18:40:41.486 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:40:59.538 [main] INFO  scanner.NoFront - Closing webcam			
+18:41:00.048 [main] INFO  scanner.NoFront - Webcam closed			
+18:41:00.048 [main] INFO  scanner.NoFront - Exiting
+18:41:00.048 [main] INFO  scanner.NoFront - ----------
+18:41:02.815 [main] INFO  scanner.NoFront - Starting the webcam
+18:41:03.895 [main] INFO  scanner.NoFront - Webcam started
+18:41:03.895 [main] INFO  scanner.NoFront - Trying to read a code
+18:41:04.116 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:41:21.788 [main] INFO  scanner.NoFront - Closing webcam			
+18:41:22.433 [main] INFO  scanner.NoFront - Webcam closed			
+18:41:22.433 [main] INFO  scanner.NoFront - Exiting
+18:41:22.433 [main] INFO  scanner.NoFront - ----------
+18:41:44.345 [main] INFO  scanner.NoFront - Starting the webcam
+18:41:45.729 [main] INFO  scanner.NoFront - Webcam started
+18:41:45.729 [main] INFO  scanner.NoFront - Trying to read a code
+18:41:45.931 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:42:03.973 [main] INFO  scanner.NoFront - Closing webcam			
+18:42:04.433 [main] INFO  scanner.NoFront - Webcam closed			
+18:42:04.433 [main] INFO  scanner.NoFront - Exiting
+18:42:04.433 [main] INFO  scanner.NoFront - ----------
+18:42:12.449 [main] INFO  scanner.NoFront - Starting the webcam
+18:42:13.530 [main] INFO  scanner.NoFront - Webcam started
+18:42:13.530 [main] INFO  scanner.NoFront - Trying to read a code
+18:42:13.747 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:42:31.806 [main] INFO  scanner.NoFront - Closing webcam			
+18:42:32.333 [main] INFO  scanner.NoFront - Webcam closed			
+18:42:32.334 [main] INFO  scanner.NoFront - Exiting
+18:42:32.334 [main] INFO  scanner.NoFront - ----------
+18:43:43.855 [main] INFO  scanner.NoFront - Starting the webcam
+18:43:45.238 [main] INFO  scanner.NoFront - Webcam started
+18:43:45.238 [main] INFO  scanner.NoFront - Trying to read a code
+18:43:45.450 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:44:03.482 [main] INFO  scanner.NoFront - Closing webcam			
+18:44:03.928 [main] INFO  scanner.NoFront - Webcam closed			
+18:44:03.928 [main] INFO  scanner.NoFront - Exiting
+18:44:03.928 [main] INFO  scanner.NoFront - ----------
+18:44:06.670 [main] INFO  scanner.NoFront - Starting the webcam
+18:44:07.746 [main] INFO  scanner.NoFront - Webcam started
+18:44:07.746 [main] INFO  scanner.NoFront - Trying to read a code
+18:44:07.968 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:44:25.930 [main] INFO  scanner.NoFront - Closing webcam			
+18:44:26.538 [main] INFO  scanner.NoFront - Webcam closed			
+18:44:26.538 [main] INFO  scanner.NoFront - Exiting
+18:44:26.538 [main] INFO  scanner.NoFront - ----------
+18:44:30.198 [main] INFO  scanner.NoFront - Starting the webcam
+18:44:31.276 [main] INFO  scanner.NoFront - Webcam started
+18:44:31.276 [main] INFO  scanner.NoFront - Trying to read a code
+18:44:31.499 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:44:49.553 [main] INFO  scanner.NoFront - Closing webcam			
+18:44:50.071 [main] INFO  scanner.NoFront - Webcam closed			
+18:44:50.071 [main] INFO  scanner.NoFront - Exiting
+18:44:50.071 [main] INFO  scanner.NoFront - ----------
+18:44:57.478 [main] INFO  scanner.NoFront - Starting the webcam
+18:44:58.556 [main] INFO  scanner.NoFront - Webcam started
+18:44:58.556 [main] INFO  scanner.NoFront - Trying to read a code
+18:44:58.782 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:45:16.833 [main] INFO  scanner.NoFront - Closing webcam			
+18:45:17.349 [main] INFO  scanner.NoFront - Webcam closed			
+18:45:17.349 [main] INFO  scanner.NoFront - Exiting
+18:45:17.349 [main] INFO  scanner.NoFront - ----------
+18:45:19.068 [main] INFO  scanner.NoFront - Starting the webcam
+18:45:20.151 [main] INFO  scanner.NoFront - Webcam started
+18:45:20.151 [main] INFO  scanner.NoFront - Trying to read a code
+18:45:20.373 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:45:31.599 [main] INFO  scanner.NoFront - Starting the webcam
+18:45:38.424 [main] INFO  scanner.NoFront - Closing webcam			
+18:45:38.938 [main] INFO  scanner.NoFront - Webcam closed			
+18:45:38.938 [main] INFO  scanner.NoFront - Exiting
+18:45:38.938 [main] INFO  scanner.NoFront - ----------
+18:45:43.591 [main] INFO  scanner.NoFront - Starting the webcam
+18:45:44.669 [main] INFO  scanner.NoFront - Webcam started
+18:45:44.669 [main] INFO  scanner.NoFront - Trying to read a code
+18:45:44.902 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:46:02.943 [main] INFO  scanner.NoFront - Closing webcam			
+18:46:03.454 [main] INFO  scanner.NoFront - Webcam closed			
+18:46:03.454 [main] INFO  scanner.NoFront - Exiting
+18:46:03.454 [main] INFO  scanner.NoFront - ----------
+18:47:40.467 [main] INFO  scanner.NoFront - Starting the webcam
+18:47:41.853 [main] INFO  scanner.NoFront - Webcam started
+18:47:41.853 [main] INFO  scanner.NoFront - Trying to read a code
+18:47:42.051 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:48:00.098 [main] INFO  scanner.NoFront - Closing webcam			
+18:48:00.544 [main] INFO  scanner.NoFront - Webcam closed			
+18:48:00.544 [main] INFO  scanner.NoFront - Exiting
+18:48:00.544 [main] INFO  scanner.NoFront - ----------
+18:48:05.708 [main] INFO  scanner.NoFront - Starting the webcam
+18:48:06.783 [main] INFO  scanner.NoFront - Webcam started
+18:48:06.784 [main] INFO  scanner.NoFront - Trying to read a code
+18:48:07.032 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+18:48:25.060 [main] INFO  scanner.NoFront - Closing webcam			
+18:48:25.573 [main] INFO  scanner.NoFront - Webcam closed			
+18:48:25.573 [main] INFO  scanner.NoFront - Exiting
+18:48:25.573 [main] INFO  scanner.NoFront - ----------
+19:01:42.382 [main] INFO  scanner.NoFront - Starting the webcam
+19:01:43.760 [main] INFO  scanner.NoFront - Webcam started
+19:01:43.760 [main] INFO  scanner.NoFront - Trying to read a code
+19:01:43.955 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+19:02:02.004 [main] INFO  scanner.NoFront - Closing webcam			
+19:02:02.453 [main] INFO  scanner.NoFront - Webcam closed			
+19:02:02.453 [main] INFO  scanner.NoFront - Exiting
+19:02:02.453 [main] INFO  scanner.NoFront - ----------
+19:02:08.205 [main] INFO  scanner.NoFront - Starting the webcam
+19:02:09.286 [main] INFO  scanner.NoFront - Webcam started
+19:02:09.286 [main] INFO  scanner.NoFront - Trying to read a code
+19:02:09.511 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+19:02:27.563 [main] INFO  scanner.NoFront - Closing webcam			
+19:02:28.070 [main] INFO  scanner.NoFront - Webcam closed			
+19:02:28.070 [main] INFO  scanner.NoFront - Exiting
+19:02:28.070 [main] INFO  scanner.NoFront - ----------
+19:10:41.441 [main] INFO  scanner.NoFront - Starting the webcam
+19:10:42.820 [main] INFO  scanner.NoFront - Webcam started
+19:10:42.820 [main] INFO  scanner.NoFront - Trying to read a code
+19:10:43.015 [main] INFO  scanner.NoFront - A code could not be read, trying 250 more times
+19:11:01.064 [main] INFO  scanner.NoFront - Closing webcam			
+19:11:01.503 [main] INFO  scanner.NoFront - Webcam closed			
+19:11:01.503 [main] INFO  scanner.NoFront - Exiting
+19:11:01.503 [main] INFO  scanner.NoFront - ----------
+19:29:53.270 [main] INFO  scanner.NoFront - Starting the webcam
+19:29:54.649 [main] INFO  scanner.NoFront - Webcam started
+19:29:54.649 [main] INFO  scanner.NoFront - Trying to read a code
+19:29:54.842 [main] INFO  scanner.NoFront - A code could not be read, trying 25 more times
+19:29:56.479 [main] INFO  scanner.NoFront - Closing webcam			
+19:29:57.331 [main] INFO  scanner.NoFront - Webcam closed			
+19:29:57.331 [main] INFO  scanner.NoFront - Exiting
+19:29:57.331 [main] INFO  scanner.NoFront - ----------
+19:30:09.219 [main] INFO  scanner.NoFront - Iniciando la camara web
+19:30:10.594 [main] INFO  scanner.NoFront - Camara web iniciada
+19:30:10.594 [main] INFO  scanner.NoFront - Intentando leer un codigo
+19:30:10.785 [main] INFO  scanner.NoFront - No fue posible leer un codigo, reintentando 25 veces mas
+19:30:12.424 [main] INFO  scanner.NoFront - Apagando la camara web
+19:30:13.275 [main] INFO  scanner.NoFront - Camara web apagada
+19:30:13.275 [main] INFO  scanner.NoFront - Proceso finalizado
+19:30:13.275 [main] INFO  scanner.NoFront - ----------
