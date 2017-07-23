@@ -37,42 +37,35 @@ import com.google.zxing.common.HybridBinarizer;
 
 public class NoFront {
 	private static Logger logger=LoggerFactory.getLogger("");
+	private static Properties properties = loadProperties("cfg/nofront.properties");
+	
 	public static void main(String[] args){	
-		//Initialize everything
-		Properties properties = loadProperties("cfg/nofront.properties");	
-		String nesRomsDir =  properties.getProperty("nesRomsDir");
-		String nesExec = properties.getProperty("nesExec");
-		String snesRomsDir = properties.getProperty("snesRomsDir");
-		String snesExec = properties.getProperty("snesExec");		
-		String genesisRomsDir = properties.getProperty("genesisRomsDir");	
-		String genesisExec = properties.getProperty("genesisExec");
+		//Initialize everything	
 		String rom = "";
 		Webcam webcam = Webcam.getDefault();
 		int count=0;
-		int retries = Integer.parseInt(properties.getProperty("retries"));		
+		int retries = Integer.parseInt(properties.getProperty("retries"));
 		logger.info("Starting the webcam");
-		startWebCam(webcam);
-		logger.info("Webcam started");
-		showMessage();
-		logger.info("Trying to read a code");
+		if (!startWebCam(webcam)) {
+			logger.info("No Webcam has been detected");
+			if (args.length==0||!args[0].equals("letmetry")) {
+				count=retries;
+			}
+		} else {
+			logger.info("Webcam started");
+			logger.info("Trying to read a code");
+			showMessage();			
+		}
 		while (count<retries) {
 			try {			
-				//Take picture and try to read it. If it fails it goes to the catch block.
+				//Take picture and try to read it. Every time it fails it goes to the catch block.
 				rom = getCodeFromPicture(webcam);
 				logger.info("Launching {}",rom);
-				if (fileExistsInDir(rom,nesRomsDir)) {
-					Runtime.getRuntime().exec(nesExec+" \""+nesRomsDir+File.separator+rom+"\"");
-				} else if (fileExistsInDir(rom,snesRomsDir)) {
-					Runtime.getRuntime().exec(snesExec+" \""+snesRomsDir+File.separator+rom+"\"");
-				} else if (fileExistsInDir(rom,genesisRomsDir)) {
-					Runtime.getRuntime().exec(genesisExec+" \""+genesisRomsDir+File.separator+rom+"\"");
-				} else {
-					logger.info("{} can't be found", rom);
-				}
+				launch(rom);
 				break;
 			} catch (NotFoundException|FormatException|ChecksumException e) {
 				if (count==0) {
-					logger.info("Retrying");
+					logger.info("A code couldn't be read, trying again {} more times",retries);
 				}
 				count++;
 			} catch (Exception e) {
@@ -80,14 +73,33 @@ public class NoFront {
 				System.exit(1);
 			}
 		}
-		logger.info("Closing webcam");
 		if (webcam!=null && webcam.isOpen()) {
+			logger.info("Closing webcam");			
 			webcam.close();
+			logger.info("Webcam closed");			
 		}
-		logger.info("Webcam closed");
 		logger.info("Exiting");
 		logger.info("----------");		
 		System.exit(0);
+	}
+	
+	public static void launch(String rom) throws IOException {
+		String nesRomsDir =  properties.getProperty("nesRomsDir");
+		String nesExec = properties.getProperty("nesExec");
+		String snesRomsDir = properties.getProperty("snesRomsDir");
+		String snesExec = properties.getProperty("snesExec");		
+		String genesisRomsDir = properties.getProperty("genesisRomsDir");	
+		String genesisExec = properties.getProperty("genesisExec");		
+		if (fileExistsInDir(rom,nesRomsDir)) {
+			Runtime.getRuntime().exec(nesExec+" \""+nesRomsDir+File.separator+rom+"\"");
+		} else if (fileExistsInDir(rom,snesRomsDir)) {
+			Runtime.getRuntime().exec(snesExec+" \""+snesRomsDir+File.separator+rom+"\"");
+		} else if (fileExistsInDir(rom,genesisRomsDir)) {
+			Runtime.getRuntime().exec(genesisExec+" \""+genesisRomsDir+File.separator+rom+"\"");
+		} else {
+			logger.info("{} can't be found", rom);
+		}
+
 	}
 	
 	public static boolean fileExistsInDir(String file,String dir) {
@@ -95,7 +107,7 @@ public class NoFront {
 	}
 
 	public static Result mockRead() throws IOException, NotFoundException, ChecksumException, FormatException {
-		String mockImg = ".\\genesis\\Alien Soldier (Europe).png";
+		String mockImg = ".\\codes\\genesis\\Alien Soldier (Europe).png";
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		Map < DecodeHintType, Object > tmpHintsMap = new EnumMap (DecodeHintType.class);		
 		tmpHintsMap.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);		
@@ -147,12 +159,13 @@ public class NoFront {
 		return props;
 	}
 
-	public static void startWebCam(Webcam webcam) {
+	public static boolean startWebCam(Webcam webcam) {
 		if (webcam!=null) {
 			webcam.open();
 		} else {
-			logger.info("No Webcam has been detected");
+			return false;
 		}
+		return true;
 	}
 
 	public static String getCodeFromPicture(Webcam webcam) throws NotFoundException, ChecksumException, FormatException, IOException {
