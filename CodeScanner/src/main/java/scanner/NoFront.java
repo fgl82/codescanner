@@ -147,7 +147,7 @@ public class NoFront {
 		JFrame mainWindow = new JFrame("img/CodeScanner");
 		ImageIcon animatedGIF = new ImageIcon("img/scanning.gif");
         JLabel labelForGIF = new JLabel(animatedGIF);	
-        JLabel textLabel = new JLabel("SCANNING");
+        JLabel textLabel = new JLabel(messages.getString("scanning"));
 		Border border = BorderFactory.createLineBorder(Color.WHITE, 2,false);
 		
 		labelForGIF.setOpaque(true);        
