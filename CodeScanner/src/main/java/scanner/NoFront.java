@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -36,22 +37,22 @@ import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-
+//todo:add tests
 public class NoFront {
 	private static Logger logger;
 	private static Properties properties;
 	private static ResourceBundle messages;
-	
+	private static Webcam webcam;
 	public static void main(String[] args){	
 		String rom = "";		
-		Webcam webcam = Webcam.getDefault();
+		webcam = Webcam.getDefault();
 		properties = loadProperties("cfg/nofront.properties");
-		logger = LoggerFactory.getLogger("");
+		logger = LoggerFactory.getLogger(NoFront.class);
 		int count=0;
 		int retries = Integer.parseInt(properties.getProperty("retries"));
 		setLanguage();		
 		logger.info(messages.getString("starting_cam"));
-		if (!startWebCam(webcam)) {
+		if (!startWebCam()) {
 			logger.info(messages.getString("no_cam"));
 			if (args.length==0||!args[0].equals("letmetry")) {
 				count=retries;
@@ -64,7 +65,7 @@ public class NoFront {
 		while (count<retries) {
 			try {			
 				//Take picture and try to read it. Every time it fails it goes to the catch block.
-				rom = getCodeFromPicture(webcam);
+				rom = getCodeFromPicture();
 				logger.info(messages.getString("launching_rom"),rom);
 				launch(rom);
 				break;
@@ -89,12 +90,13 @@ public class NoFront {
 	}
 	
 	private static void setLanguage() {
-		Locale locale = Locale.getDefault();
 		String language = properties.getProperty("language");
-		String country = properties.getProperty("country");		
-		if (language!=null&&country!=null) {			
-			locale = new Locale(language,country);
-		} 
+		String country = properties.getProperty("country");
+		if (language==null||country==null) {
+			language="";
+			country="";
+		}
+		Locale locale = new Locale(language,country);
 		messages = ResourceBundle.getBundle("messages", locale);
 	}	
 	
@@ -120,7 +122,7 @@ public class NoFront {
 		return new File(dir,file).exists();
 	}
 
-	public static Result realRead(Webcam webcam) throws NotFoundException, ChecksumException, FormatException {
+	public static Result realRead() throws NotFoundException, ChecksumException, FormatException {
 		BufferedImage image = webcam.getImage();
 		LuminanceSource source = new BufferedImageLuminanceSource(image);
 		BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -142,25 +144,33 @@ public class NoFront {
 	}	
 
 	public static void showMessage() {
-		JFrame frame = new JFrame("CodeScanner");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JLabel label = new JLabel("Scanning");
-		frame.getContentPane().add(label, BorderLayout.CENTER);
-		frame.setUndecorated(true);
-		frame.setBackground(Color.BLACK);
-		frame.pack();
-		frame.setSize(160,90);
-		label.setSize(frame.getWidth(),frame.getHeight());
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font(Font.MONOSPACED, Font.BOLD, 18));
-		label.setForeground(Color.GREEN);
-		label.setBackground(Color.BLACK);
-		label.setOpaque(true);
-		Border border = BorderFactory.createLineBorder(Color.GREEN, 4);
-		label.setBorder(border);	
-		frame.setLocationRelativeTo(null);
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
-		frame.setVisible(true);
+		JFrame mainWindow = new JFrame("img/CodeScanner");
+		ImageIcon animatedGIF = new ImageIcon("img/scanning.gif");
+        JLabel labelForGIF = new JLabel(animatedGIF);	
+        JLabel textLabel = new JLabel("SCANNING");
+		Border border = BorderFactory.createLineBorder(Color.WHITE, 2,false);
+		
+		labelForGIF.setOpaque(true);        
+        
+		textLabel.setForeground(Color.WHITE);
+		textLabel.setBackground(Color.BLACK);
+		textLabel.setOpaque(true);		
+		textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		textLabel.setVerticalAlignment(SwingConstants.CENTER);
+		textLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 18));        
+
+		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+        mainWindow.getContentPane().add(labelForGIF, BorderLayout.CENTER);
+		mainWindow.getContentPane().add(textLabel, BorderLayout.PAGE_END);
+		mainWindow.setBackground(Color.BLACK);
+		mainWindow.setUndecorated(true);	
+		mainWindow.getContentPane().setBackground(Color.BLACK);
+		mainWindow.pack();
+		mainWindow.setSize(130,108);
+		mainWindow.getRootPane().setBorder(border);
+		mainWindow.setLocationRelativeTo(null);
+		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
+		mainWindow.setVisible(true);
 	}
 
 	public static Properties loadProperties(String fileName) {
@@ -173,7 +183,7 @@ public class NoFront {
 		return props;
 	}
 
-	public static boolean startWebCam(Webcam webcam) {
+	public static boolean startWebCam() {
 		if (webcam!=null) {
 			webcam.open();
 		} else {
@@ -182,11 +192,11 @@ public class NoFront {
 		return true;
 	}
 
-	public static String getCodeFromPicture(Webcam webcam) throws NotFoundException, ChecksumException, FormatException, IOException {
+	public static String getCodeFromPicture() throws NotFoundException, ChecksumException, FormatException, IOException {
 		if(webcam==null) {
 			return mockRead().getText();
 		} else {
-			return realRead(webcam).getText();
+			return realRead().getText();
 		}
 	}	
 }
