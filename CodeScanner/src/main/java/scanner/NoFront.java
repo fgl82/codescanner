@@ -194,7 +194,7 @@ public class NoFront {
 		mainWindow.pack();
 		mainWindow.setSize(labelForGIF.getSize());
 //		mainWindow.setLocationRelativeTo(null)
-		mainWindow.setLocation((int)(screenWidth/2-mainWindow.getWidth()/2), (int)(screenHeight-mainWindow.getHeight()-40));
+		mainWindow.setLocation(((int)screenWidth/2-mainWindow.getWidth()/2), ((int)screenHeight-mainWindow.getHeight()-40));
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
