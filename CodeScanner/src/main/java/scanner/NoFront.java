@@ -2,8 +2,13 @@ package scanner;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,12 +21,13 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,33 +50,39 @@ public class NoFront {
 	private static Properties properties;
 	private static ResourceBundle messages;
 	private static Webcam webcam;
-	
-	public static void main(String[] args){	
-		String rom = "";		
+
+	public static void main(String[] args) {	
 		webcam = Webcam.getDefault();
 		properties = loadProperties("cfg/nofront.properties");
 		logger = LoggerFactory.getLogger(NoFront.class);
+		messages = ResourceBundle.getBundle("messages", getLocale());
+		if (Boolean.parseBoolean(properties.getProperty("silent"))) {
+			process();
+		} else {
+			createWindow();	
+		}
+	}
+
+	private static void process() {
+		String rom = "";		
 		int count=0;
-		int retries = Integer.parseInt(properties.getProperty("retries"));
-		setLanguage();		
+		int retries = Integer.parseInt(properties.getProperty("retries"));		
 		logger.info(messages.getString("starting_cam"));
 		if (!startWebCam()) {
 			logger.info(messages.getString("no_cam"));
-			if (args.length==0||!args[0].equals("letmetry")) {
-				count=retries;
-			}
-		} else {
-			logger.info(messages.getString("cam_started"));
-			logger.info(messages.getString("reading_code"));
-			showMessage();			
+			JOptionPane.showMessageDialog(null, messages.getString("no_cam"));
+			return;
 		}
+		Boolean problemOrEnded = false;
 		while (count<retries) {
 			try {			
 				//Take picture and try to read it. Every time it fails it goes to the catch block.
 				rom = getCodeFromPicture();
 				logger.info(messages.getString("launching_rom"),rom);
-				launch(rom);
-				break;
+				if (!launch(rom)) {
+					JOptionPane.showMessageDialog(null, messages.getString("rom_not_found").replaceAll("{}", rom));
+				}
+				problemOrEnded=true;
 			} catch (NotFoundException|FormatException|ChecksumException e) {
 				if (count==0) {
 					logger.info(messages.getString("read_fail"),retries);
@@ -78,7 +90,11 @@ public class NoFront {
 				count++;
 			} catch (Exception e) {
 				logger.error(e.toString());
-				System.exit(1);
+				JOptionPane.showMessageDialog(null, e.toString());
+				problemOrEnded=true;
+			}
+			if (problemOrEnded) {
+				break;
 			}
 		}
 		if (webcam!=null && webcam.isOpen()) {
@@ -86,9 +102,7 @@ public class NoFront {
 			webcam.close();
 			logger.info(messages.getString("cam_closed"));			
 		}
-		logger.info(messages.getString("exit"));
 		logger.info("----------");		
-		System.exit(0);
 	}
 
 	private static Properties loadProperties(String fileName) {
@@ -97,20 +111,20 @@ public class NoFront {
 			props.load(input);
 		} catch (IOException ex) {
 			logger.info(ex.toString());
+			JOptionPane.showMessageDialog(null, ex.toString());
 			System.exit(1);
 		} 
 		return props;
 	}
-	
-	private static void setLanguage() {
+
+	private static Locale getLocale() {
 		String language = properties.getProperty("language");
 		String country = properties.getProperty("country");
 		if (language==null||country==null) {
 			language="";
 			country="";
 		}
-		Locale locale = new Locale(language,country);
-		messages = ResourceBundle.getBundle("messages", locale);
+		return new Locale(language,country);
 	}	
 
 	private static boolean startWebCam() {
@@ -122,31 +136,77 @@ public class NoFront {
 		return true;
 	}
 
-	private static void showMessage() {
-		JFrame mainWindow = new JFrame("img/CodeScanner");
-		ImageIcon animatedGIF = new ImageIcon("img/scanning.gif");
-        JLabel labelForGIF = new JLabel(animatedGIF);	
-        JLabel textLabel = new JLabel(messages.getString("scanning"));
-		Border border = BorderFactory.createLineBorder(Color.WHITE, 2,false);		
-		labelForGIF.setOpaque(true);                
-		textLabel.setForeground(Color.WHITE);
-		textLabel.setBackground(Color.BLACK);
-		textLabel.setOpaque(true);		
-		textLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		textLabel.setVerticalAlignment(SwingConstants.CENTER);
-		textLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 18));        
-		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-        mainWindow.getContentPane().add(labelForGIF, BorderLayout.CENTER);
-		mainWindow.getContentPane().add(textLabel, BorderLayout.PAGE_END);
-		mainWindow.setBackground(Color.BLACK);
-		mainWindow.setUndecorated(true);	
-		mainWindow.getContentPane().setBackground(Color.BLACK);
+	private static void createWindow() {
+	    class LabelForGIFListener extends MouseAdapter {
+			boolean processing = false;
+	        private final JDialog frame;
+	        private final JLabel label;
+	        private Point mouseDownCompCoords = null;
+
+	        public LabelForGIFListener(JDialog frame, JLabel label) {
+	            this.frame = frame;
+	            this.label=label;
+	        }
+
+	        @Override
+	        public void mouseReleased(MouseEvent e) {
+	            mouseDownCompCoords = null;
+	        }
+
+	        @Override
+	        public void mousePressed(MouseEvent e) {
+	            mouseDownCompCoords = e.getPoint();
+	        }
+
+	        @Override
+	        public void mouseDragged(MouseEvent e) {
+	            Point currCoords = e.getLocationOnScreen();
+	            frame.setLocation(currCoords.x - mouseDownCompCoords.x, currCoords.y - mouseDownCompCoords.y);
+	        }
+	        
+			@Override
+			public void mouseClicked(MouseEvent e) {			
+				if (!processing) {
+					Runnable scanTask = () -> {						
+						processing = true;
+						label.setIcon(new ImageIcon("img/"+properties.getProperty("movingImage")));						
+						process();
+						label.setIcon(new ImageIcon("img/"+properties.getProperty("staticImage")));
+						processing=false;
+					};
+					new Thread(scanTask).start(); 
+				}
+			}             
+	    }			
+		JDialog mainWindow = new JDialog();
+		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+properties.getProperty("staticImage")));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double screenWidth = screenSize.getWidth();
+		double screenHeight = screenSize.getHeight();		
+		labelForGIF.setOpaque(false);              
+		LabelForGIFListener frameDragListener = new LabelForGIFListener(mainWindow,labelForGIF);
+        labelForGIF.addMouseListener(frameDragListener);
+        labelForGIF.addMouseMotionListener(frameDragListener);	
+		mainWindow.getContentPane().add(labelForGIF, BorderLayout.CENTER);
+		mainWindow.setUndecorated(true);
+		mainWindow.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
+		mainWindow.getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.0f));		
 		mainWindow.pack();
-		mainWindow.setSize(133,100);
-		mainWindow.getRootPane().setBorder(border);
-		mainWindow.setLocationRelativeTo(null);
+		mainWindow.setSize(labelForGIF.getSize());
+//		mainWindow.setLocationRelativeTo(null)
+		mainWindow.setLocation((int)(screenWidth/2-mainWindow.getWidth()/2), (int)(screenHeight-mainWindow.getHeight()-40));
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
+		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
+		mainWindow.getRootPane().getActionMap().put("exit", new AbstractAction() {
+			private static final long serialVersionUID = 2893748791670397467L;
+			@Override
+		     public void actionPerformed(ActionEvent e) {
+			    mainWindow.dispose();
+			    System.exit(0);
+		     }
+		});
+		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(properties.getProperty("alwaysOnTop")));
 	}
 
 	private static String getCodeFromPicture() throws NotFoundException, ChecksumException, FormatException, IOException {
@@ -164,7 +224,7 @@ public class NoFront {
 		Reader reader = new MultiFormatReader();
 		return reader.decode(bitmap);
 	}
-	
+
 	private static Result mockRead() throws IOException, NotFoundException, ChecksumException, FormatException {
 		String mockImg = ".\\codes\\genesis\\Alien Soldier (Europe).png";
 		@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -177,8 +237,8 @@ public class NoFront {
 		Reader reader = new MultiFormatReader();
 		return reader.decode(bitmap,tmpHintsMap);
 	}	
-	
-	private static void launch(String rom) throws IOException {
+
+	private static boolean launch(String rom) throws IOException {
 		String nesRomsDir =  properties.getProperty("nesRomsDir");
 		String nesExec = properties.getProperty("nesExec");
 		String snesRomsDir = properties.getProperty("snesRomsDir");
@@ -193,9 +253,11 @@ public class NoFront {
 			Runtime.getRuntime().exec(genesisExec+" \""+genesisRomsDir+File.separator+rom+"\"");
 		} else {
 			logger.info(messages.getString("rom_not_found"), rom);
+			return false;
 		}
+		return true;
 	}
-	
+
 	private static boolean fileExistsInDir(String file,String dir) {
 		return new File(dir,file).exists();
 	}
