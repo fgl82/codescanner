@@ -198,9 +198,10 @@ public class NoFront {
 		mainWindow.pack();
 		mainWindow.setSize(labelForGIF.getSize());
 //		mainWindow.setLocationRelativeTo(null)
-		mainWindow.setLocation(((int)screenWidth/2-mainWindow.getWidth()/2), ((int)screenHeight-mainWindow.getHeight()-40));
+		mainWindow.setLocation(((int)screenWidth-mainWindow.getWidth()), ((int)screenHeight-mainWindow.getHeight()-40));
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
+		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(properties.getProperty("alwaysOnTop")));		
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0), "launch");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4,InputEvent.ALT_DOWN_MASK), "exit");		
@@ -226,11 +227,10 @@ public class NoFront {
 						process();
 						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty(staticImage)));
 					};
-					new Thread(scanTask).start(); 
+					new Thread(scanTask,"Process-Thread").start(); 
 				}				
 		     }
 		});		
-		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(properties.getProperty("alwaysOnTop")));
 	}
 
 	private static String getCodeFromPicture() throws NotFoundException, ChecksumException, FormatException, IOException {
@@ -253,7 +253,7 @@ public class NoFront {
 		String mockImg = ".\\codes\\genesis\\Alien Soldier (Europe).png";
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		Map < DecodeHintType, Object > tmpHintsMap = new EnumMap (DecodeHintType.class);		
-		tmpHintsMap.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);		
+		tmpHintsMap.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
 		tmpHintsMap.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
 		BufferedImage image = ImageIO.read(new File(mockImg));
 		LuminanceSource source = new BufferedImageLuminanceSource(image);
