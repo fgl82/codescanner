@@ -141,8 +141,9 @@ public class NoFront {
 	}
 
 	private static void createWindow() {
-	    class LabelForGIFListener extends MouseAdapter {
-
+		final String staticImage = "staticImage";
+		final String movingImage = "movingImage";
+		class LabelForGIFListener extends MouseAdapter {
 	        private final JDialog frame;
 	        private final JLabel label;
 	        private Point mouseDownCompCoords = null;
@@ -172,19 +173,19 @@ public class NoFront {
 			public void mouseClicked(MouseEvent e) {			
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						label.setIcon(new ImageIcon("img/"+properties.getProperty("movingImage")));						
+						label.setIcon(new ImageIcon("img/"+properties.getProperty(movingImage)));						
 						process();
-						label.setIcon(new ImageIcon("img/"+properties.getProperty("staticImage")));
+						label.setIcon(new ImageIcon("img/"+properties.getProperty(staticImage)));
 					};
 					new Thread(scanTask).start(); 
 				}
 			}             
 	    }			
 		JDialog mainWindow = new JDialog();
-		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+properties.getProperty("staticImage")));
+		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+properties.getProperty(staticImage)));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double screenWidth = screenSize.getWidth();
-		double screenHeight = screenSize.getHeight();		
+		double screenHeight = screenSize.getHeight();
 		labelForGIF.setOpaque(false);              
 		LabelForGIFListener frameDragListener = new LabelForGIFListener(mainWindow,labelForGIF);
         labelForGIF.addMouseListener(frameDragListener);
@@ -215,9 +216,9 @@ public class NoFront {
 		     public void actionPerformed(ActionEvent e) {
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty("movingImage")));						
+						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty(movingImage)));						
 						process();
-						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty("staticImage")));
+						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty(staticImage)));
 					};
 					new Thread(scanTask).start(); 
 				}				
