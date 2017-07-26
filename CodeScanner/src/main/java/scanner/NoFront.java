@@ -50,7 +50,8 @@ public class NoFront {
 	private static Properties properties;
 	private static ResourceBundle messages;
 	private static Webcam webcam;
-
+	private static boolean processing = false;
+	
 	public static void main(String[] args) {	
 		webcam = Webcam.getDefault();
 		properties = loadProperties("cfg/nofront.properties");
@@ -63,7 +64,8 @@ public class NoFront {
 		}
 	}
 
-	private static void process() {
+	private static synchronized void process() {
+		processing = true;
 		String rom = "";		
 		int count=0;
 		int retries = Integer.parseInt(properties.getProperty("retries"));		
@@ -71,6 +73,7 @@ public class NoFront {
 		if (!startWebCam()) {
 			logger.info(messages.getString("no_cam"));
 			JOptionPane.showMessageDialog(null, messages.getString("no_cam"));
+			processing = false;
 			return;
 		}
 		Boolean problemOrEnded = false;
@@ -102,7 +105,8 @@ public class NoFront {
 			webcam.close();
 			logger.info(messages.getString("cam_closed"));			
 		}
-		logger.info("----------");		
+		logger.info("----------");
+		processing = false;
 	}
 
 	private static Properties loadProperties(String fileName) {
@@ -138,7 +142,7 @@ public class NoFront {
 
 	private static void createWindow() {
 	    class LabelForGIFListener extends MouseAdapter {
-			boolean processing = false;
+
 	        private final JDialog frame;
 	        private final JLabel label;
 	        private Point mouseDownCompCoords = null;
@@ -168,11 +172,9 @@ public class NoFront {
 			public void mouseClicked(MouseEvent e) {			
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						processing = true;
 						label.setIcon(new ImageIcon("img/"+properties.getProperty("movingImage")));						
 						process();
 						label.setIcon(new ImageIcon("img/"+properties.getProperty("staticImage")));
-						processing=false;
 					};
 					new Thread(scanTask).start(); 
 				}
@@ -198,6 +200,7 @@ public class NoFront {
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
+		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0), "launch");
 		mainWindow.getRootPane().getActionMap().put("exit", new AbstractAction() {
 			private static final long serialVersionUID = 2893748791670397467L;
 			@Override
@@ -206,6 +209,20 @@ public class NoFront {
 			    System.exit(0);
 		     }
 		});
+		mainWindow.getRootPane().getActionMap().put("launch", new AbstractAction() {
+			private static final long serialVersionUID = 5463115862508920904L;
+			@Override
+		     public void actionPerformed(ActionEvent e) {
+				if (!processing) {
+					Runnable scanTask = () -> {						
+						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty("movingImage")));						
+						process();
+						labelForGIF.setIcon(new ImageIcon("img/"+properties.getProperty("staticImage")));
+					};
+					new Thread(scanTask).start(); 
+				}				
+		     }
+		});		
 		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(properties.getProperty("alwaysOnTop")));
 	}
 
