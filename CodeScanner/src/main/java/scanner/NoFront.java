@@ -208,8 +208,12 @@ public class NoFront {
 			private static final long serialVersionUID = 2893748791670397467L;
 			@Override
 		     public void actionPerformed(ActionEvent e) {
-			    mainWindow.dispose();
-			    System.exit(0);
+				if (!processing) {				
+				    mainWindow.dispose();
+				    System.exit(0);
+				} else {
+					JOptionPane.showMessageDialog(null, messages.getString("wait_processing"));
+				}
 		     }
 		});
 		mainWindow.getRootPane().getActionMap().put("launch", new AbstractAction() {
