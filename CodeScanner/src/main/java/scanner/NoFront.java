@@ -84,7 +84,7 @@ public class NoFront {
 				rom = getCodeFromPicture();
 				logger.info(messages.getString("launching_rom"),rom);
 				if (!launch(rom)) {
-					JOptionPane.showMessageDialog(null, messages.getString("rom_not_found").replaceAll("{}", rom));
+					JOptionPane.showMessageDialog(null, messages.getString("rom_not_found").replace("{}", rom));
 				}
 				problemOrEnded=true;
 			} catch (NotFoundException|FormatException|ChecksumException e) {
