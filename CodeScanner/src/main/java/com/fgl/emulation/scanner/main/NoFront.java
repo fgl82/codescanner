@@ -54,7 +54,7 @@ public class NoFront {
 			}			
 		} catch (IOException ex) {
 			logInfo(ex.toString());
-			JOptionPane.showMessageDialog(null, ex.toString());
+			alert(ex.toString());
 			System.exit(1);
 		}		
 	}
@@ -67,7 +67,7 @@ public class NoFront {
 		logInfo(messageFinder.find("starting_cam"));
 		if (!qrCodeReader.open()) {
 			logInfo(messageFinder.find("no_cam"));
-			JOptionPane.showMessageDialog(null, messageFinder.find("no_cam"));
+			alert(messageFinder.find("no_cam"));
 			processing = false;
 			return;
 		}
@@ -78,7 +78,7 @@ public class NoFront {
 				rom = qrCodeReader.read();
 				logInfo(messageFinder.find("launching_rom"),rom);
 				if (!gameLauncher.launch(rom)) {
-					JOptionPane.showMessageDialog(null, messageFinder.find("rom_not_found").replace("{}", rom));
+					alert(messageFinder.find("rom_not_found").replace("{}", rom));
 				}
 				problemOrEnded=true;
 			} catch (NotFoundException|FormatException|ChecksumException e) {
@@ -88,7 +88,7 @@ public class NoFront {
 				count++;
 			} catch (Exception e) {
 				logger.error(e.toString());
-				JOptionPane.showMessageDialog(null, e.toString());
+				alert(e.toString());
 				problemOrEnded=true;
 			}
 			if (problemOrEnded) {
@@ -176,7 +176,7 @@ public class NoFront {
 				    mainWindow.dispose();
 				    System.exit(0);
 				} else {
-					JOptionPane.showMessageDialog(null, messageFinder.find("wait_processing"));
+					alert(messageFinder.find("wait_processing"));
 				}
 		     }
 		});
@@ -194,6 +194,10 @@ public class NoFront {
 				}				
 		     }
 		});		
+	}
+	
+	private static void alert(String message) {
+		JOptionPane.showMessageDialog(null, message);		
 	}
 	
 	private static void logInfo(String message) {
