@@ -2,11 +2,12 @@ package com.fgl.emulation.scanner.launch;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 public class GameLauncher {
-	private Map <String,String> foldersAndExecs;
+	private Map <String,String> foldersAndExecs = new HashMap<>();
 	
 	public void addFolderAndExec(String folder, String exec) {
 		foldersAndExecs.put(folder, exec);

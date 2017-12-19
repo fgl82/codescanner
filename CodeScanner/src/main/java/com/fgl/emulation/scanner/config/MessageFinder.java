@@ -7,8 +7,8 @@ public class MessageFinder {
 	private ResourceBundle messages;
 	private Locale locale;
 	
-	public void setLocale(Locale locale) {
-		this.locale = locale;
+	public void setLocale(String country, String language) {
+		this.locale = new Locale(country,language);
 	}
 	
 	public void loadFile(String file) {

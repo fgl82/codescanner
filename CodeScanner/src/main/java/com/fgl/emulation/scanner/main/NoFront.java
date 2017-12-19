@@ -39,14 +39,21 @@ public class NoFront {
 	private static PropertyReader propertyReader = new PropertyReader();
 	private static boolean processing = false;
 	
-	public static void main(String[] args) {	  
-		gameLauncher.addFolderAndExec(propertyReader.getProperty("nesRomsDir"), propertyReader.getProperty("nesExec"));
-		gameLauncher.addFolderAndExec(propertyReader.getProperty("snesRomsDir"), propertyReader.getProperty("snesExec"));
-		gameLauncher.addFolderAndExec(propertyReader.getProperty("genesisRomsDir"), propertyReader.getProperty("genesisExec"));
+	public static void main(String[] args) {	
 		try {			
 			propertyReader.loadFile("cfg/nofront.properties");
-			messageFinder.setLocale(propertyReader.getLocale());
-			messageFinder.loadFile("messages");	
+			String language = propertyReader.getProperty("language");
+			String country = propertyReader.getProperty("country");
+			if (language==null||country==null) {
+				language="";
+				country="";
+			}
+			
+			messageFinder.setLocale(language,country);
+			messageFinder.loadFile("messages");
+			gameLauncher.addFolderAndExec(propertyReader.getProperty("nesRomsDir"), propertyReader.getProperty("nesExec"));
+			gameLauncher.addFolderAndExec(propertyReader.getProperty("snesRomsDir"), propertyReader.getProperty("snesExec"));
+			gameLauncher.addFolderAndExec(propertyReader.getProperty("genesisRomsDir"), propertyReader.getProperty("genesisExec"));			
 			if (Boolean.parseBoolean(propertyReader.getProperty("silent"))) {
 				process();
 			} else {
