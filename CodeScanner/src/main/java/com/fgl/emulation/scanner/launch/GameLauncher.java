@@ -16,10 +16,6 @@ public class GameLauncher {
 	public Map<String, String> getFoldersAndExecs() {
 		return foldersAndExecs;
 	}
-	
-	public void setFoldersAndExecs(Map<String, String> foldersAndExecs) {
-		this.foldersAndExecs = foldersAndExecs;
-	}
 
 	private String getLaunchCommand(String rom) {
 		String launchCommand = "";
