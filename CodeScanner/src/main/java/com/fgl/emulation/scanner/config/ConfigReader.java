@@ -16,7 +16,7 @@ public class ConfigReader {
 		}
 	}	
 	
-	public String getProperty(String property) {
+	public String getValue(String property) {
 		return properties.getProperty(property);
 	}
 }
