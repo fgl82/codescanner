@@ -42,15 +42,16 @@ public class KeyListener implements NativeKeyListener {
 				GlobalScreen.unregisterNativeHook();
 				exitComboPressed=true;
 			} catch (NativeHookException e1) {
-				MyLogger.getLogger().error("Error occurred while unregistering native hook");
+				MyLogger.getLogger(this.getClass().getName()).error("Error occurred while unregistering native hook");
 			}
 		}
-		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_L==e.getKeyCode()) {			
+		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_L==e.getKeyCode()) {						
 			launchComboPressed=true;
 		}
 	}
 
 	public void nativeKeyReleased(NativeKeyEvent e) {
+		exitComboPressed=false;
 		launchComboPressed=false;
 	}
 
