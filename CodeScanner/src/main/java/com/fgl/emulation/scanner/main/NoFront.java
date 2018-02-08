@@ -22,7 +22,7 @@ import javax.swing.KeyStroke;
 
 import com.fgl.emulation.scanner.capture.CodeReader;
 import com.fgl.emulation.scanner.config.MessageFinder;
-import com.fgl.emulation.scanner.config.PropertyReader;
+import com.fgl.emulation.scanner.config.ConfigReader;
 import com.fgl.emulation.scanner.launch.GameLauncher;
 import com.fgl.emulation.scanner.launch.KeyListener;
 import com.fgl.emulation.scanner.logging.MyLogger;
@@ -35,13 +35,13 @@ public class NoFront {
 	private static CodeReader qrCodeReader = new CodeReader();
 	private static GameLauncher gameLauncher = new GameLauncher();
 	private static MessageFinder messageFinder = new MessageFinder();
-	private static PropertyReader propertyReader = new PropertyReader();
+	private static ConfigReader configReader = new ConfigReader();
 	private static KeyListener keyListener = new KeyListener();
 	private static boolean processing = false;
+	private static boolean shhhh = false;
 
 	public static void main(String[] args) {
 		setup();
-		boolean shhhh = Boolean.parseBoolean(propertyReader.getProperty("silent"));
 		if (shhhh) {
 			runSilently();
 		} else {
@@ -51,18 +51,19 @@ public class NoFront {
 
 	private static void setup() {
 		try {
-			propertyReader.loadFile("cfg/nofront.properties");
-			String language = propertyReader.getProperty("language");
-			String country = propertyReader.getProperty("country");
+			configReader.loadFile("cfg/nofront.properties");
+			shhhh = Boolean.parseBoolean(configReader.getProperty("silent"));
+			String language = configReader.getProperty("language");
+			String country = configReader.getProperty("country");
 			if (language==null||country==null) {
 				language="";
 				country="";
 			}
 			messageFinder.setLocale(language,country);
 			messageFinder.loadFile("messages");
-			gameLauncher.addFolderAndExec(propertyReader.getProperty("nesRomsDir"), propertyReader.getProperty("nesExec"));
-			gameLauncher.addFolderAndExec(propertyReader.getProperty("snesRomsDir"), propertyReader.getProperty("snesExec"));
-			gameLauncher.addFolderAndExec(propertyReader.getProperty("genesisRomsDir"), propertyReader.getProperty("genesisExec"));
+			gameLauncher.addFolderAndExec(configReader.getProperty("nesRomsDir"), configReader.getProperty("nesExec"));
+			gameLauncher.addFolderAndExec(configReader.getProperty("snesRomsDir"), configReader.getProperty("snesExec"));
+			gameLauncher.addFolderAndExec(configReader.getProperty("genesisRomsDir"), configReader.getProperty("genesisExec"));
 		} catch (IOException ex) {
 			logger.error(ex.toString());
 			alert(ex.toString());
@@ -92,7 +93,7 @@ public class NoFront {
 		processing = true;
 		String rom = "";		
 		int count=0;
-		int retries = Integer.parseInt(propertyReader.getProperty("retries"));
+		int retries = Integer.parseInt(configReader.getProperty("retries"));
 		logger.info(messageFinder.find("starting_cam"));
 		if (!qrCodeReader.open()) {
 			logger.info(messageFinder.find("no_cam"));
@@ -166,16 +167,16 @@ public class NoFront {
 			public void mouseClicked(MouseEvent e) {			
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						label.setIcon(new ImageIcon("img/"+propertyReader.getProperty(movingImage)));						
+						label.setIcon(new ImageIcon("img/"+configReader.getProperty(movingImage)));						
 						process();
-						label.setIcon(new ImageIcon("img/"+propertyReader.getProperty(staticImage)));
+						label.setIcon(new ImageIcon("img/"+configReader.getProperty(staticImage)));
 					};
 					new Thread(scanTask).start(); 
 				}
 			}             
 		}			
 		JDialog mainWindow = new JDialog();
-		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+propertyReader.getProperty(staticImage)));
+		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+configReader.getProperty(staticImage)));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double screenWidth = screenSize.getWidth();
 		double screenHeight = screenSize.getHeight();
@@ -193,7 +194,7 @@ public class NoFront {
 		mainWindow.setLocation(((int)screenWidth-mainWindow.getWidth()), ((int)screenHeight-mainWindow.getHeight()-40));
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
-		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(propertyReader.getProperty("alwaysOnTop")));		
+		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(configReader.getProperty("alwaysOnTop")));		
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0), "launch");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4,InputEvent.ALT_DOWN_MASK), "exit");		
@@ -215,9 +216,9 @@ public class NoFront {
 			public void actionPerformed(ActionEvent e) {
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						labelForGIF.setIcon(new ImageIcon("img/"+propertyReader.getProperty(movingImage)));						
+						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getProperty(movingImage)));						
 						process();
-						labelForGIF.setIcon(new ImageIcon("img/"+propertyReader.getProperty(staticImage)));
+						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getProperty(staticImage)));
 					};
 					new Thread(scanTask,"Process-Thread").start(); 
 				}				
