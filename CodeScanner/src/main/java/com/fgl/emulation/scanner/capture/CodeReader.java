@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import com.fgl.emulation.scanner.logging.MyLogger;
 import com.github.sarxos.webcam.Webcam;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -65,10 +64,9 @@ public class CodeReader {
 	public boolean open() {
 		if (webcam!=null) {
 			webcam.open();
-		} else {
-			return false;
+			return true;
 		}
-		return true;
+		return false;		
 	}
 	
 	public void close() {
