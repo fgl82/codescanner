@@ -11,9 +11,8 @@ public class ConfigReader {
 		
 	public void loadFile(String fileName) throws IOException {
 		properties = new Properties();
-		try (InputStream input = new FileInputStream(fileName);) {			
-			properties.load(input);
-		}
+		InputStream input = new FileInputStream(fileName);
+		properties.load(input);
 	}	
 	
 	public String getValue(String property) {

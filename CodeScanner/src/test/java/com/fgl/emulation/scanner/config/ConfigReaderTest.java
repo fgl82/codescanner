@@ -1,5 +1,6 @@
 package com.fgl.emulation.scanner.config;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -27,7 +28,7 @@ public class ConfigReaderTest {
 	}	
 	
 	@Test
-	public void getValue() {
+	public void testLoadFileAndGetValue() {
 		boolean noError = true;
 		String value=null;
 		try {
@@ -38,5 +39,11 @@ public class ConfigReaderTest {
 		}
 		assertTrue(noError);
 		assertNotNull(value);
-	}
+		try {
+			configReader.loadFile("cfg/nofront.propertie");
+		} catch (IOException e) {
+			noError = false;
+		}
+		assertFalse(noError);		
+	}	
 }

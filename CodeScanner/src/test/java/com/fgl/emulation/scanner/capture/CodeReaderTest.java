@@ -22,9 +22,7 @@ public class CodeReaderTest {
 	@Before
 	public void setupTest() {
 		codeReader = new CodeReader();
-		codeReader.open();
 		assertNotNull(codeReader);
-		assertTrue(codeReader.isReading());
 	}
 	
 	@After
@@ -36,25 +34,24 @@ public class CodeReaderTest {
 	}	
 	
 	@Test
-	public void testRead() {
-		boolean readError = false;
+	public void testRead() throws IOException {
+		codeReader.open();
+		assertTrue(codeReader.isReading());
 		boolean formatError = false;
 		boolean checksumError = false;
-		boolean camError = false;
+		boolean readError = false;
 		try {			
-			codeReader.read();
-		} catch (IOException e) {
-			readError = true;
+			codeReader.read(true,"C:\\Users\\Administrador.000\\git\\codescanner\\CodeScanner\\codes\\snes\\ActRaiser (USA).png");
+			codeReader.read(false);
 		} catch (FormatException e1) {
 			formatError = true;
 		} catch (NotFoundException e) {
-			camError=true;
+			readError=true;
 		} catch (ChecksumException e) {
 			checksumError=true;
 		}
-		assertNotNull(camError);
-		assertFalse(readError);
-		assertFalse(formatError);		
+		assertNotNull(readError);
+		assertFalse(formatError);	
 		assertFalse(checksumError);
 	}
 

@@ -7,23 +7,15 @@ import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class KeyListener implements NativeKeyListener {
 	private boolean launchComboPressed=false;
 	private boolean exitComboPressed=false;
-	private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-	public KeyListener() {
-		try {
-			hushLogging();
-			GlobalScreen.registerNativeHook();
-			GlobalScreen.addNativeKeyListener(this);			
-		}
-		catch (NativeHookException ex) {
-			System.exit(1);
-		}
+	public KeyListener() throws NativeHookException {
+		hushLogging();
+		GlobalScreen.registerNativeHook();
+		GlobalScreen.addNativeKeyListener(this);	
 	}
 
 	private void hushLogging() {
@@ -38,19 +30,18 @@ public class KeyListener implements NativeKeyListener {
 	public void nativeKeyPressed(NativeKeyEvent e) {		
 		boolean isAltPressed = (e.getModifiers() & NativeKeyEvent.ALT_MASK) > 0;
 		boolean isCtrlPressed = (e.getModifiers() & NativeKeyEvent.CTRL_MASK) > 0;
-		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_X==e.getKeyCode()) {
-			try {
-				GlobalScreen.unregisterNativeHook();
-				exitComboPressed=true;
-			} catch (NativeHookException e1) {
-				logger.error("Error occurred while unregistering native hook");
-			}
-		}
 		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_L==e.getKeyCode()) {						
 			launchComboPressed=true;
 		}
+		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_X==e.getKeyCode()) {
+			exitComboPressed=true;
+		}		
 	}
-
+	
+	public void unregister() throws NativeHookException { 
+		GlobalScreen.unregisterNativeHook();
+	}
+	
 	public void nativeKeyReleased(NativeKeyEvent e) {
 		exitComboPressed=false;
 		launchComboPressed=false;

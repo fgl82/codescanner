@@ -29,7 +29,9 @@ public class GameLauncherTest {
 	@Test
 	public void testLaunch() throws IOException {
 		try {
-			assertFalse(gameLauncher.launch("someGame"));
+			gameLauncher.addFolderAndExec("C:/EmuStation/roms/nes","\"C:/EmuStation/Retroarch/retroarch.exe\" -L \"C:/EmuStation/Retroarch/cores/nestopia_libretro.dll\"");
+			assertFalse(gameLauncher.launch("Arkanoid (USA.zip"));
+			assertTrue(gameLauncher.launch("Arkanoid (USA).zip"));
 		} catch (IOException e) {
 			throw e;
 		}

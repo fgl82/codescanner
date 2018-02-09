@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import org.jnativehook.NativeHookException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,12 +38,12 @@ public class NoFront {
 	private static final GameLauncher gameLauncher = new GameLauncher();
 	private static final MessageFinder messageFinder = new MessageFinder();
 	private static final ConfigReader configReader = new ConfigReader();
-	private static final KeyListener keyListener = new KeyListener();
 	private static boolean processing = false;
 	private static boolean shhhh = false;
 	private static final Logger logger = LoggerFactory.getLogger("com.fgl.emulation.scanner.main.NoFront");
-	
-	public static void main(String[] args) {
+	private static KeyListener keyListener;
+	public static void main(String[] args) throws NativeHookException {
+		keyListener = new KeyListener();
 		setup(); 
 		if (shhhh) {
 			runSilently();
@@ -83,7 +84,8 @@ public class NoFront {
 					}
 					Thread.sleep(50);
 				}
-			} catch(InterruptedException e) {
+				keyListener.unregister();
+			} catch(InterruptedException | NativeHookException e) {
 				logger.error(e.toString());
 				Thread.currentThread().interrupt();
 			}
@@ -96,9 +98,13 @@ public class NoFront {
 		String rom = "";		
 		int count=0;
 		int retries = Integer.parseInt(configReader.getValue("retries"));
-		logger.info(messageFinder.find("starting_cam"));
-		if (!qrCodeReader.open()) {
-			logger.info(messageFinder.find("no_cam"));
+		String message = messageFinder.find("starting_cam");
+		logger.info(message);
+		try {
+			qrCodeReader.open();
+		} catch (Exception e) {
+			message=messageFinder.find("no_cam");
+			logger.info(message);
 			alert(messageFinder.find("no_cam"));
 			processing = false;
 			return;
@@ -107,8 +113,9 @@ public class NoFront {
 		while (count<retries) {
 			try {			
 				//Take picture and try to read it. Every time it fails it goes to the catch block.
-				rom = qrCodeReader.read();
-				logger.info(messageFinder.find("launching_rom"),rom);
+				rom = qrCodeReader.read(false);
+				message=messageFinder.find("launching_rom");
+				logger.info(message,rom);
 				if (!gameLauncher.launch(rom)) {
 					alert(messageFinder.find("rom_not_found").replace("{}", rom));
 				}
@@ -128,14 +135,16 @@ public class NoFront {
 			}
 		}
 		if (qrCodeReader.isReading()) {
-			logger.info(messageFinder.find("closing_cam"));
+			message = messageFinder.find("closing_cam");
+			logger.info(message);
 			qrCodeReader.close();
-			logger.info(messageFinder.find("cam_closed"));
+			message = messageFinder.find("cam_closed");
+			logger.info(message);
 		}
 		logger.info("----------");
 		processing = false;
 	}
-
+	
 	private static void createWindow() {
 		final String staticImage = "staticImage";
 		final String movingImage = "movingImage";
