@@ -2,9 +2,6 @@ package com.fgl.emulation.scanner.config;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
 
 import org.junit.After;
 import org.junit.Before;
