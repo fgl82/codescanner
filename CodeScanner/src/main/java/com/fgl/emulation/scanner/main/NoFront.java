@@ -20,28 +20,30 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fgl.emulation.scanner.capture.CodeReader;
-import com.fgl.emulation.scanner.config.MessageFinder;
 import com.fgl.emulation.scanner.config.ConfigReader;
+import com.fgl.emulation.scanner.config.MessageFinder;
 import com.fgl.emulation.scanner.launch.GameLauncher;
 import com.fgl.emulation.scanner.launch.KeyListener;
-import com.fgl.emulation.scanner.logging.MyLogger;
 import com.google.zxing.ChecksumException;
 import com.google.zxing.FormatException;
 import com.google.zxing.NotFoundException;
 
 public class NoFront {
-	private static MyLogger logger = MyLogger.getLogger();
-	private static CodeReader qrCodeReader = new CodeReader();
-	private static GameLauncher gameLauncher = new GameLauncher();
-	private static MessageFinder messageFinder = new MessageFinder();
-	private static ConfigReader configReader = new ConfigReader();
-	private static KeyListener keyListener = new KeyListener();
+	private static final CodeReader qrCodeReader = new CodeReader();
+	private static final GameLauncher gameLauncher = new GameLauncher();
+	private static final MessageFinder messageFinder = new MessageFinder();
+	private static final ConfigReader configReader = new ConfigReader();
+	private static final KeyListener keyListener = new KeyListener();
 	private static boolean processing = false;
 	private static boolean shhhh = false;
-
+	private static final Logger logger = LoggerFactory.getLogger("com.fgl.emulation.scanner.main.NoFront");
+	
 	public static void main(String[] args) {
-		setup();
+		setup(); 
 		if (shhhh) {
 			runSilently();
 		} else {
@@ -52,18 +54,18 @@ public class NoFront {
 	private static void setup() {
 		try {
 			configReader.loadFile("cfg/nofront.properties");
-			shhhh = Boolean.parseBoolean(configReader.getProperty("silent"));
-			String language = configReader.getProperty("language");
-			String country = configReader.getProperty("country");
+			shhhh = Boolean.parseBoolean(configReader.getValue("silent"));
+			String language = configReader.getValue("language");
+			String country = configReader.getValue("country");
 			if (language==null||country==null) {
 				language="";
 				country="";
 			}
 			messageFinder.setLocale(language,country);
 			messageFinder.loadFile("messages");
-			gameLauncher.addFolderAndExec(configReader.getProperty("nesRomsDir"), configReader.getProperty("nesExec"));
-			gameLauncher.addFolderAndExec(configReader.getProperty("snesRomsDir"), configReader.getProperty("snesExec"));
-			gameLauncher.addFolderAndExec(configReader.getProperty("genesisRomsDir"), configReader.getProperty("genesisExec"));
+			gameLauncher.addFolderAndExec(configReader.getValue("nesRomsDir"), configReader.getValue("nesExec"));
+			gameLauncher.addFolderAndExec(configReader.getValue("snesRomsDir"), configReader.getValue("snesExec"));
+			gameLauncher.addFolderAndExec(configReader.getValue("genesisRomsDir"), configReader.getValue("genesisExec"));
 		} catch (IOException ex) {
 			logger.error(ex.toString());
 			alert(ex.toString());
@@ -79,7 +81,7 @@ public class NoFront {
 					if (keyListener.isLaunchComboPressed()) {					    		
 						process();
 					}
-					Thread.sleep(100);
+					Thread.sleep(50);
 				}
 			} catch(InterruptedException e) {
 				logger.error(e.toString());
@@ -93,7 +95,7 @@ public class NoFront {
 		processing = true;
 		String rom = "";		
 		int count=0;
-		int retries = Integer.parseInt(configReader.getProperty("retries"));
+		int retries = Integer.parseInt(configReader.getValue("retries"));
 		logger.info(messageFinder.find("starting_cam"));
 		if (!qrCodeReader.open()) {
 			logger.info(messageFinder.find("no_cam"));
@@ -167,16 +169,16 @@ public class NoFront {
 			public void mouseClicked(MouseEvent e) {			
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						label.setIcon(new ImageIcon("img/"+configReader.getProperty(movingImage)));						
+						label.setIcon(new ImageIcon("img/"+configReader.getValue(movingImage)));						
 						process();
-						label.setIcon(new ImageIcon("img/"+configReader.getProperty(staticImage)));
+						label.setIcon(new ImageIcon("img/"+configReader.getValue(staticImage)));
 					};
 					new Thread(scanTask).start(); 
 				}
 			}             
 		}			
 		JDialog mainWindow = new JDialog();
-		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+configReader.getProperty(staticImage)));
+		JLabel labelForGIF = new JLabel(new ImageIcon("img/"+configReader.getValue(staticImage)));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double screenWidth = screenSize.getWidth();
 		double screenHeight = screenSize.getHeight();
@@ -194,7 +196,7 @@ public class NoFront {
 		mainWindow.setLocation(((int)screenWidth-mainWindow.getWidth()), ((int)screenHeight-mainWindow.getHeight()-40));
 		mainWindow.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
 		mainWindow.setVisible(true);
-		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(configReader.getProperty("alwaysOnTop")));		
+		mainWindow.setAlwaysOnTop(Boolean.parseBoolean(configReader.getValue("alwaysOnTop")));		
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0), "launch");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4,InputEvent.ALT_DOWN_MASK), "exit");		
@@ -216,9 +218,9 @@ public class NoFront {
 			public void actionPerformed(ActionEvent e) {
 				if (!processing) {
 					Runnable scanTask = () -> {						
-						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getProperty(movingImage)));						
+						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(movingImage)));						
 						process();
-						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getProperty(staticImage)));
+						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(staticImage)));
 					};
 					new Thread(scanTask,"Process-Thread").start(); 
 				}				
