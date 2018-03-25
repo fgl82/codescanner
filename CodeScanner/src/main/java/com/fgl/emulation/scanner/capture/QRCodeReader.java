@@ -17,20 +17,24 @@ import com.google.zxing.Reader;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-public class CodeReader {
+public class QRCodeReader implements CodeReader{
 	private Webcam webcam;
 
-	public String read(boolean mockRead,String... path) throws NotFoundException, ChecksumException, FormatException, IOException {
+	public String read(boolean mockRead,String... path) throws CodeReadException {
 		BufferedImage image = webcam.getImage();
-		if (mockRead) {
-			image = ImageIO.read(new File(path[0]));
+		try {
+			if (mockRead) {
+				image = ImageIO.read(new File(path[0]));
+			}
+			LuminanceSource source = new BufferedImageLuminanceSource(image);
+			BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+			Reader reader = new MultiFormatReader();
+			return reader.decode(bitmap).getText();
+		} catch (NotFoundException | ChecksumException | FormatException  | IOException e) {
+			throw new CodeReadException(e.getMessage());
 		}
-		LuminanceSource source = new BufferedImageLuminanceSource(image);
-		BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-		Reader reader = new MultiFormatReader();
-		return reader.decode(bitmap).getText();
 	}
-
+		
 	public boolean isReading() {
 		return (webcam.isOpen());
 	}

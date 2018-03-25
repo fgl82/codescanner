@@ -11,17 +11,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.zxing.ChecksumException;
-import com.google.zxing.FormatException;
-import com.google.zxing.NotFoundException;
-
 public class CodeReaderTest {
 	
-	CodeReader codeReader;
+	QRCodeReader codeReader;
 	
 	@Before
 	public void setupTest() {
-		codeReader = new CodeReader();
+		codeReader = new QRCodeReader();
 		assertNotNull(codeReader);
 	}
 	
@@ -37,22 +33,14 @@ public class CodeReaderTest {
 	public void testRead() throws IOException {
 		codeReader.open();
 		assertTrue(codeReader.isReading());
-		boolean formatError = false;
-		boolean checksumError = false;
-		boolean readError = false;
+		boolean codeReadError = false;
 		try {			
 			codeReader.read(true,"C:\\Users\\Administrador.000\\git\\codescanner\\CodeScanner\\codes\\snes\\ActRaiser (USA).png");
 			codeReader.read(false);
-		} catch (FormatException e1) {
-			formatError = true;
-		} catch (NotFoundException e) {
-			readError=true;
-		} catch (ChecksumException e) {
-			checksumError=true;
-		}
-		assertNotNull(readError);
-		assertFalse(formatError);	
-		assertFalse(checksumError);
+		} catch (CodeReadException e1) {
+			codeReadError = true;
+		} 
+		assertNotNull(codeReadError);
 	}
 
 }
