@@ -216,40 +216,8 @@ public class QRNoFront {
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0), "exit");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0), "launch");
 		mainWindow.getRootPane().getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4,InputEvent.ALT_DOWN_MASK), "exit");		
-		mainWindow.getRootPane().getActionMap().put("exit", new AbstractAction() {
-			private static final long serialVersionUID = 2893748791670397467L;
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!processing) {				
-					mainWindow.dispose();
-					System.exit(0);
-				} else {
-					alert(messageFinder.find("wait_processing"));
-				}
-			}
-		});
-		mainWindow.getRootPane().getActionMap().put("launch", new AbstractAction() {
-			private static final long serialVersionUID = 5463115862508920904L;
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!processing) {
-					Runnable scanTask = () -> {						
-						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(movingImage)));						
-						process();
-						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(staticImage)));
-					};
-					new Thread(scanTask,THREAD_NAME).start(); 
-				}				
-			}
-		});	
 		
-	    //get the systemTray of the system
-	    SystemTray systemTray = SystemTray.getSystemTray();
-	    Image image = Toolkit.getDefaultToolkit().getImage("img/icon.png");
-    
-	    PopupMenu trayPopupMenu = new PopupMenu();
-	    MenuItem action = new MenuItem("Launch");
-	    action.addActionListener(new AbstractAction() {
+		AbstractAction launchAction = new AbstractAction() {
 			private static final long serialVersionUID = 1L;
 			@Override
 	    	public void actionPerformed(ActionEvent e) {
@@ -262,18 +230,35 @@ public class QRNoFront {
 					new Thread(scanTask,THREAD_NAME).start(); 
 				}		                      
 	    	}
-	    });     	    
+	    };
+	    
+	    AbstractAction exitAction = new AbstractAction() {
+			private static final long serialVersionUID = 2893748791670397467L;
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!processing) {				
+					mainWindow.dispose();
+					System.exit(0);
+				} else {
+					alert(messageFinder.find("wait_processing"));
+				}
+			}
+		};
+		
+		mainWindow.getRootPane().getActionMap().put("exit", exitAction);
+		mainWindow.getRootPane().getActionMap().put("launch", launchAction);	
+		
+	    //get the systemTray of the system
+	    SystemTray systemTray = SystemTray.getSystemTray();
+	    Image image = Toolkit.getDefaultToolkit().getImage("img/icon.png");
+    
+	    PopupMenu trayPopupMenu = new PopupMenu();
+	    MenuItem action = new MenuItem("Launch");
+	    action.addActionListener(launchAction);     	    
 	    trayPopupMenu.add(action);
 	   
 	    MenuItem close = new MenuItem("Close");
-	    close.addActionListener(new AbstractAction() {
-			private static final long serialVersionUID = 1L;
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	        	mainWindow.dispose();	        	
-	            System.exit(0);             
-	        }
-	    });
+	    close.addActionListener(exitAction);
 	    trayPopupMenu.add(close);
 
 	    TrayIcon trayIcon = new TrayIcon(image, "No Front", trayPopupMenu);	  
