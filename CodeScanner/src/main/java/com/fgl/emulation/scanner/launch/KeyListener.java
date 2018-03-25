@@ -15,7 +15,7 @@ public class KeyListener implements NativeKeyListener {
 	public KeyListener() throws NativeHookException {
 		hushLogging();
 		GlobalScreen.registerNativeHook();
-		GlobalScreen.addNativeKeyListener(this);	
+		GlobalScreen.addNativeKeyListener(this);
 	}
 
 	private void hushLogging() {
@@ -30,7 +30,7 @@ public class KeyListener implements NativeKeyListener {
 	public void nativeKeyPressed(NativeKeyEvent e) {		
 		boolean isAltPressed = (e.getModifiers() & NativeKeyEvent.ALT_MASK) > 0;
 		boolean isCtrlPressed = (e.getModifiers() & NativeKeyEvent.CTRL_MASK) > 0;
-		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_L==e.getKeyCode()) {						
+		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_L==e.getKeyCode()) {
 			launchComboPressed=true;
 		}
 		if (isCtrlPressed&&isAltPressed&&NativeKeyEvent.VC_X==e.getKeyCode()) {
