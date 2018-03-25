@@ -24,15 +24,16 @@ import org.jnativehook.NativeHookException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fgl.emulation.scanner.capture.QRCodeReader;
 import com.fgl.emulation.scanner.capture.CodeReadException;
+import com.fgl.emulation.scanner.capture.CodeReader;
+import com.fgl.emulation.scanner.capture.QRCodeReader;
 import com.fgl.emulation.scanner.config.ConfigReader;
 import com.fgl.emulation.scanner.config.MessageFinder;
 import com.fgl.emulation.scanner.launch.GameLauncher;
 import com.fgl.emulation.scanner.launch.KeyListener;
 
 public class NoFront {
-	private static final QRCodeReader qrCodeReader = new QRCodeReader();
+	private static final CodeReader qrCodeReader = new QRCodeReader();
 	private static final GameLauncher gameLauncher = new GameLauncher();
 	private static final MessageFinder messageFinder = new MessageFinder();
 	private static final ConfigReader configReader = new ConfigReader();
