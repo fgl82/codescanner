@@ -1,15 +1,22 @@
 package com.fgl.emulation.scanner.main;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.MenuItem;
 import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import javax.swing.AbstractAction;
@@ -24,15 +31,16 @@ import org.jnativehook.NativeHookException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fgl.emulation.scanner.capture.CamQRCodeReader;
 import com.fgl.emulation.scanner.capture.CodeReadException;
 import com.fgl.emulation.scanner.capture.CodeReader;
-import com.fgl.emulation.scanner.capture.CamQRCodeReader;
 import com.fgl.emulation.scanner.config.ConfigReader;
 import com.fgl.emulation.scanner.config.MessageFinder;
 import com.fgl.emulation.scanner.launch.GameLauncher;
 import com.fgl.emulation.scanner.launch.KeyListener;
 
 public class QRNoFront {
+	private static final String THREAD_NAME="Process-Thread";
 	private static final CodeReader qrCodeReader = new CamQRCodeReader();
 	private static final GameLauncher gameLauncher = new GameLauncher();
 	private static final MessageFinder messageFinder = new MessageFinder();
@@ -89,7 +97,7 @@ public class QRNoFront {
 				Thread.currentThread().interrupt();
 			}
 		};
-		new Thread(scanTask,"Process-Thread").start(); 
+		new Thread(scanTask,THREAD_NAME).start(); 
 	}
 
 	private static synchronized void process() {
@@ -230,10 +238,83 @@ public class QRNoFront {
 						process();
 						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(staticImage)));
 					};
-					new Thread(scanTask,"Process-Thread").start(); 
+					new Thread(scanTask,THREAD_NAME).start(); 
 				}				
 			}
-		});		
+		});	
+		
+	    //get the systemTray of the system
+	    SystemTray systemTray = SystemTray.getSystemTray();
+	    Image image = Toolkit.getDefaultToolkit().getImage("img/icon.png");
+    
+	    PopupMenu trayPopupMenu = new PopupMenu();
+	    MenuItem action = new MenuItem("Launch");
+	    action.addActionListener(new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+			@Override
+	    	public void actionPerformed(ActionEvent e) {
+				if (!processing) {
+					Runnable scanTask = () -> {						
+						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(movingImage)));						
+						process();
+						labelForGIF.setIcon(new ImageIcon("img/"+configReader.getValue(staticImage)));
+					};
+					new Thread(scanTask,THREAD_NAME).start(); 
+				}		                      
+	    	}
+	    });     	    
+	    trayPopupMenu.add(action);
+	   
+	    MenuItem close = new MenuItem("Close");
+	    close.addActionListener(new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	mainWindow.dispose();	        	
+	            System.exit(0);             
+	        }
+	    });
+	    trayPopupMenu.add(close);
+
+	    TrayIcon trayIcon = new TrayIcon(image, "No Front", trayPopupMenu);	  
+	    trayIcon.addMouseListener(new MouseListener() {
+
+			@Override
+		    public void mousePressed( MouseEvent e ) {
+	    	    mainWindow.toFront();
+	            mainWindow.repaint();
+		     }
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// Do nothing 				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// Do nothing 				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// Do nothing 				
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Do nothing 				
+			}
+	    	
+	    });
+	    
+	    
+	    trayIcon.setImageAutoSize(true);
+
+	    try{
+	        systemTray.add(trayIcon);
+	    }catch(AWTException awtException){
+	        logger.error("AAAGHHHHHH!!!");
+	    }		
 	}
 
 	private static void alert(String message) {
