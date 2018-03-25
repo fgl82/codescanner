@@ -5,7 +5,7 @@ public interface CodeReader {
 
 	public boolean isReading();
 
-	public void open();
+	public void initialize();
 
-	public void close();
+	public void finish();
 }

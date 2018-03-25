@@ -13,17 +13,17 @@ import org.junit.Test;
 
 public class CodeReaderTest {
 	
-	QRCodeReader codeReader;
+	CamQRCodeReader codeReader;
 	
 	@Before
 	public void setupTest() {
-		codeReader = new QRCodeReader();
+		codeReader = new CamQRCodeReader();
 		assertNotNull(codeReader);
 	}
 	
 	@After
 	public void finishTest() {
-		codeReader.close();
+		codeReader.finish();
 		assertFalse(codeReader.isReading());
 		codeReader = null;		
 		assertNull(codeReader);
@@ -31,7 +31,7 @@ public class CodeReaderTest {
 	
 	@Test
 	public void testRead() throws IOException {
-		codeReader.open();
+		codeReader.initialize();
 		assertTrue(codeReader.isReading());
 		boolean codeReadError = false;
 		try {			

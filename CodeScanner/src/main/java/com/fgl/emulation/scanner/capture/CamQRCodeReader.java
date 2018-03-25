@@ -17,7 +17,7 @@ import com.google.zxing.Reader;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-public class QRCodeReader implements CodeReader{
+public class CamQRCodeReader implements CodeReader{
 	private Webcam webcam;
 
 	public String read(boolean mockRead,String... path) throws CodeReadException {
@@ -39,12 +39,12 @@ public class QRCodeReader implements CodeReader{
 		return (webcam.isOpen());
 	}
 
-	public void open() {
+	public void initialize() {
 		webcam = Webcam.getDefault();
 		webcam.open();
 	}
 
-	public void close() {
+	public void finish() {
 		webcam.close();
 	}
 }

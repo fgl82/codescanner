@@ -6,6 +6,6 @@ import org.junit.Test;
 public class NoFrontTest {
 	@Test
 	public void testMain() throws NativeHookException {
-		NoFront.main(new String[]{});
+		QRNoFront.main(new String[]{});
 	}	
 }

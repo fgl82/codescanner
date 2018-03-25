@@ -1,7 +1,7 @@
 package com.fgl.emulation.scanner.capture;
 
-public class CodeReadException extends Exception{
-	private static final long serialVersionUID = 1L;
+@SuppressWarnings("serial")
+public class CodeReadException extends Exception{	
 	public CodeReadException(String message) {
 		super(message);
 	}

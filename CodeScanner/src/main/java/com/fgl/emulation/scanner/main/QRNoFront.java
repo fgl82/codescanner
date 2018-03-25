@@ -26,14 +26,14 @@ import org.slf4j.LoggerFactory;
 
 import com.fgl.emulation.scanner.capture.CodeReadException;
 import com.fgl.emulation.scanner.capture.CodeReader;
-import com.fgl.emulation.scanner.capture.QRCodeReader;
+import com.fgl.emulation.scanner.capture.CamQRCodeReader;
 import com.fgl.emulation.scanner.config.ConfigReader;
 import com.fgl.emulation.scanner.config.MessageFinder;
 import com.fgl.emulation.scanner.launch.GameLauncher;
 import com.fgl.emulation.scanner.launch.KeyListener;
 
-public class NoFront {
-	private static final CodeReader qrCodeReader = new QRCodeReader();
+public class QRNoFront {
+	private static final CodeReader qrCodeReader = new CamQRCodeReader();
 	private static final GameLauncher gameLauncher = new GameLauncher();
 	private static final MessageFinder messageFinder = new MessageFinder();
 	private static final ConfigReader configReader = new ConfigReader();
@@ -100,7 +100,7 @@ public class NoFront {
 		String message = messageFinder.find("starting_cam");
 		logger.info(message);
 		try {
-			qrCodeReader.open();
+			qrCodeReader.initialize();
 		} catch (Exception e) {
 			message=messageFinder.find("no_cam");
 			logger.info(message);
@@ -136,7 +136,7 @@ public class NoFront {
 		if (qrCodeReader.isReading()) {
 			message = messageFinder.find("closing_cam");
 			logger.info(message);
-			qrCodeReader.close();
+			qrCodeReader.finish();
 			message = messageFinder.find("cam_closed");
 			logger.info(message);
 		}
